@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+  <ui:composition template="/template.xhtml">
+    <ui:define name="title">
+      <h:outputText value="#{bundle.ViewBancoTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="body">
+      <h:panelGroup id="messagePanel" layout="block">
+        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+      </h:panelGroup>
+      <h:form>
+        <h:panelGrid columns="2">
+          <h:outputText value="#{bundle.ViewBancoLabel_idBanco}"/>
+          <h:outputText value="#{bancoController.selected.idBanco}" title="#{bundle.ViewBancoTitle_idBanco}"/>
+          <h:outputText value="#{bundle.ViewBancoLabel_nombreBanco}"/>
+          <h:outputText value="#{bancoController.selected.nombreBanco}" title="#{bundle.ViewBancoTitle_nombreBanco}"/>
+          <h:outputText value="#{bundle.ViewBancoLabel_noCuenta}"/>
+          <h:outputText value="#{bancoController.selected.noCuenta}" title="#{bundle.ViewBancoTitle_noCuenta}"/>
+          <h:outputText value="#{bundle.ViewBancoLabel_tipoCuenta}"/>
+          <h:outputText value="#{bancoController.selected.tipoCuenta}" title="#{bundle.ViewBancoTitle_tipoCuenta}"/>
+          <h:outputText value="#{bundle.ViewBancoLabel_saldo}"/>
+          <h:outputText value="#{bancoController.selected.saldo}" title="#{bundle.ViewBancoTitle_saldo}"/>
+        </h:panelGrid>
+        <br />
+        <h:commandLink action="#{bancoController.destroyAndView}" value="#{bundle.ViewBancoDestroyLink}"/>
+        <br />
+        <br />
+        <h:link outcome="Edit" value="#{bundle.ViewBancoEditLink}"/>
+        <br />
+        <h:commandLink action="#{bancoController.prepareCreate}" value="#{bundle.ViewBancoCreateLink}" />
+        <br />
+        <h:commandLink action="#{bancoController.prepareList}" value="#{bundle.ViewBancoShowAllLink}"/>
+        <br />
+        <br />
+        <h:link outcome="/index" value="#{bundle.ViewBancoIndexLink}"/>
+
+      </h:form>
+    </ui:define>
+  </ui:composition>
+
+</html>

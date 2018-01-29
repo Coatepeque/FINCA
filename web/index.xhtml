@@ -3,10 +3,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
   <h:head>
-    <title>Facelet Title</title>
+      <title>Facelet Title</title>
+      <h:outputStylesheet name="css/jsfcrud.css"/>
   </h:head>
   <h:body>
-    Hello from Facelets
+      Hello from Facelets
+      <br />
+      <h:link outcome="/vistas/banco/List" value="Show All Banco Items"/>
+      <br />
+      <h:link outcome="/vistas/detalleCuentaBancaria/List" value="Show All DetalleCuentaBancaria Items"/>
+      <br />
+      <h:link outcome="/vistas/empleado/List" value="Show All Empleado Items"/>
+      <br />
+      <h:link outcome="/vistas/tipoEmp/List" value="Show All TipoEmp Items"/>
+      <br />
+      <h:link outcome="/vistas/usuario/List" value="Show All Usuario Items"/>
   </h:body>
+
+
+
+
+
 </html>
 

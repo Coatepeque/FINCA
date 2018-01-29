@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+  <ui:composition template="/template.xhtml">
+    <ui:define name="title">
+      <h:outputText value="#{bundle.ViewTipoEmpTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="body">
+      <h:panelGroup id="messagePanel" layout="block">
+        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+      </h:panelGroup>
+      <h:form>
+        <h:panelGrid columns="2">
+          <h:outputText value="#{bundle.ViewTipoEmpLabel_idTipoEmp}"/>
+          <h:outputText value="#{tipoEmpController.selected.idTipoEmp}" title="#{bundle.ViewTipoEmpTitle_idTipoEmp}"/>
+          <h:outputText value="#{bundle.ViewTipoEmpLabel_codigo}"/>
+          <h:outputText value="#{tipoEmpController.selected.codigo}" title="#{bundle.ViewTipoEmpTitle_codigo}"/>
+          <h:outputText value="#{bundle.ViewTipoEmpLabel_descripcion}"/>
+          <h:outputText value="#{tipoEmpController.selected.descripcion}" title="#{bundle.ViewTipoEmpTitle_descripcion}"/>
+          <h:outputText value="#{bundle.ViewTipoEmpLabel_EMPLEADOidempleado}"/>
+          <h:outputText value="#{tipoEmpController.selected.EMPLEADOidempleado}" title="#{bundle.ViewTipoEmpTitle_EMPLEADOidempleado}"/>
+        </h:panelGrid>
+        <br />
+        <h:commandLink action="#{tipoEmpController.destroyAndView}" value="#{bundle.ViewTipoEmpDestroyLink}"/>
+        <br />
+        <br />
+        <h:link outcome="Edit" value="#{bundle.ViewTipoEmpEditLink}"/>
+        <br />
+        <h:commandLink action="#{tipoEmpController.prepareCreate}" value="#{bundle.ViewTipoEmpCreateLink}" />
+        <br />
+        <h:commandLink action="#{tipoEmpController.prepareList}" value="#{bundle.ViewTipoEmpShowAllLink}"/>
+        <br />
+        <br />
+        <h:link outcome="/index" value="#{bundle.ViewTipoEmpIndexLink}"/>
+
+      </h:form>
+    </ui:define>
+  </ui:composition>
+
+</html>

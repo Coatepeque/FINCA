@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+  <ui:composition template="/template.xhtml">
+    <ui:define name="title">
+      <h:outputText value="#{bundle.EditDetalleCuentaBancariaTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="body">
+      <h:panelGroup id="messagePanel" layout="block">
+        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+      </h:panelGroup>
+      <h:form>
+        <h:panelGrid columns="2">
+          <h:outputLabel value="#{bundle.EditDetalleCuentaBancariaLabel_idDetalleCuenta}" for="idDetalleCuenta" />
+          <h:inputText id="idDetalleCuenta" value="#{detalleCuentaBancariaController.selected.idDetalleCuenta}" title="#{bundle.EditDetalleCuentaBancariaTitle_idDetalleCuenta}" required="true" requiredMessage="#{bundle.EditDetalleCuentaBancariaRequiredMessage_idDetalleCuenta}"/>
+          <h:outputLabel value="#{bundle.EditDetalleCuentaBancariaLabel_fecha}" for="fecha" />
+          <h:inputText id="fecha" value="#{detalleCuentaBancariaController.selected.fecha}" title="#{bundle.EditDetalleCuentaBancariaTitle_fecha}" required="true" requiredMessage="#{bundle.EditDetalleCuentaBancariaRequiredMessage_fecha}">
+            <f:convertDateTime pattern="MM/dd/yyyy" />
+          </h:inputText>
+          <h:outputLabel value="#{bundle.EditDetalleCuentaBancariaLabel_cantidad}" for="cantidad" />
+          <h:inputText id="cantidad" value="#{detalleCuentaBancariaController.selected.cantidad}" title="#{bundle.EditDetalleCuentaBancariaTitle_cantidad}" required="true" requiredMessage="#{bundle.EditDetalleCuentaBancariaRequiredMessage_cantidad}"/>
+          <h:outputLabel value="#{bundle.EditDetalleCuentaBancariaLabel_descripcion}" for="descripcion" />
+          <h:inputText id="descripcion" value="#{detalleCuentaBancariaController.selected.descripcion}" title="#{bundle.EditDetalleCuentaBancariaTitle_descripcion}" required="true" requiredMessage="#{bundle.EditDetalleCuentaBancariaRequiredMessage_descripcion}"/>
+          <h:outputLabel value="#{bundle.EditDetalleCuentaBancariaLabel_BANCOidbanco}" for="BANCOidbanco" />
+          <h:selectOneMenu id="BANCOidbanco" value="#{detalleCuentaBancariaController.selected.BANCOidbanco}" title="#{bundle.EditDetalleCuentaBancariaTitle_BANCOidbanco}" required="true" requiredMessage="#{bundle.EditDetalleCuentaBancariaRequiredMessage_BANCOidbanco}">
+            <f:selectItems value="#{bancoController.itemsAvailableSelectOne}"/>
+          </h:selectOneMenu>
+          <h:outputLabel value="#{bundle.EditDetalleCuentaBancariaLabel_EMPLEADOidempleado}" for="EMPLEADOidempleado" />
+          <h:selectOneMenu id="EMPLEADOidempleado" value="#{detalleCuentaBancariaController.selected.EMPLEADOidempleado}" title="#{bundle.EditDetalleCuentaBancariaTitle_EMPLEADOidempleado}" required="true" requiredMessage="#{bundle.EditDetalleCuentaBancariaRequiredMessage_EMPLEADOidempleado}">
+            <f:selectItems value="#{empleadoController.itemsAvailableSelectOne}"/>
+          </h:selectOneMenu>
+        </h:panelGrid>
+        <h:commandLink action="#{detalleCuentaBancariaController.update}" value="#{bundle.EditDetalleCuentaBancariaSaveLink}"/>
+        <br />
+        <br />
+        <h:link outcome="View" value="#{bundle.EditDetalleCuentaBancariaViewLink}"/>
+        <br />
+        <h:commandLink action="#{detalleCuentaBancariaController.prepareList}" value="#{bundle.EditDetalleCuentaBancariaShowAllLink}" immediate="true"/>
+        <br />
+        <br />
+        <h:link outcome="/index" value="#{bundle.EditDetalleCuentaBancariaIndexLink}" />
+      </h:form>
+    </ui:define>
+  </ui:composition>
+
+</html>
