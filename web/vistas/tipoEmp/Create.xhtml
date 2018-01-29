@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+  <ui:composition template="/template.xhtml">
+    <ui:define name="title">
+      <h:outputText value="#{bundle.CreateTipoEmpTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="body">
+      <h:panelGroup id="messagePanel" layout="block">
+        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+      </h:panelGroup>
+      <h:form>
+        <h:panelGrid columns="2">
+          <h:outputLabel value="#{bundle.CreateTipoEmpLabel_idTipoEmp}" for="idTipoEmp" />
+          <h:inputText id="idTipoEmp" value="#{tipoEmpController.selected.idTipoEmp}" title="#{bundle.CreateTipoEmpTitle_idTipoEmp}" required="true" requiredMessage="#{bundle.CreateTipoEmpRequiredMessage_idTipoEmp}"/>
+          <h:outputLabel value="#{bundle.CreateTipoEmpLabel_codigo}" for="codigo" />
+          <h:inputText id="codigo" value="#{tipoEmpController.selected.codigo}" title="#{bundle.CreateTipoEmpTitle_codigo}" required="true" requiredMessage="#{bundle.CreateTipoEmpRequiredMessage_codigo}"/>
+          <h:outputLabel value="#{bundle.CreateTipoEmpLabel_descripcion}" for="descripcion" />
+          <h:inputText id="descripcion" value="#{tipoEmpController.selected.descripcion}" title="#{bundle.CreateTipoEmpTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateTipoEmpRequiredMessage_descripcion}"/>
+          <h:outputLabel value="#{bundle.CreateTipoEmpLabel_EMPLEADOidempleado}" for="EMPLEADOidempleado" />
+          <h:selectOneMenu id="EMPLEADOidempleado" value="#{tipoEmpController.selected.EMPLEADOidempleado}" title="#{bundle.CreateTipoEmpTitle_EMPLEADOidempleado}" required="true" requiredMessage="#{bundle.CreateTipoEmpRequiredMessage_EMPLEADOidempleado}">
+            <f:selectItems value="#{empleadoController.itemsAvailableSelectOne}"/>
+          </h:selectOneMenu>
+        </h:panelGrid>
+        <br />
+        <h:commandLink action="#{tipoEmpController.create}" value="#{bundle.CreateTipoEmpSaveLink}" />
+        <br />
+        <br />
+        <h:commandLink action="#{tipoEmpController.prepareList}" value="#{bundle.CreateTipoEmpShowAllLink}" immediate="true"/>
+        <br />
+        <br />
+        <h:link outcome="/index" value="#{bundle.CreateTipoEmpIndexLink}"/>
+      </h:form>
+    </ui:define>
+  </ui:composition>
+
+</html>

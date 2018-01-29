@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+  <ui:composition template="/template.xhtml">
+    <ui:define name="title">
+      <h:outputText value="#{bundle.CreateBancoTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="body">
+      <h:panelGroup id="messagePanel" layout="block">
+        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+      </h:panelGroup>
+      <h:form>
+        <h:panelGrid columns="2">
+          <h:outputLabel value="#{bundle.CreateBancoLabel_idBanco}" for="idBanco" />
+          <h:inputText id="idBanco" value="#{bancoController.selected.idBanco}" title="#{bundle.CreateBancoTitle_idBanco}" required="true" requiredMessage="#{bundle.CreateBancoRequiredMessage_idBanco}"/>
+          <h:outputLabel value="#{bundle.CreateBancoLabel_nombreBanco}" for="nombreBanco" />
+          <h:inputText id="nombreBanco" value="#{bancoController.selected.nombreBanco}" title="#{bundle.CreateBancoTitle_nombreBanco}" required="true" requiredMessage="#{bundle.CreateBancoRequiredMessage_nombreBanco}"/>
+          <h:outputLabel value="#{bundle.CreateBancoLabel_noCuenta}" for="noCuenta" />
+          <h:inputText id="noCuenta" value="#{bancoController.selected.noCuenta}" title="#{bundle.CreateBancoTitle_noCuenta}" required="true" requiredMessage="#{bundle.CreateBancoRequiredMessage_noCuenta}"/>
+          <h:outputLabel value="#{bundle.CreateBancoLabel_tipoCuenta}" for="tipoCuenta" />
+          <h:inputText id="tipoCuenta" value="#{bancoController.selected.tipoCuenta}" title="#{bundle.CreateBancoTitle_tipoCuenta}" required="true" requiredMessage="#{bundle.CreateBancoRequiredMessage_tipoCuenta}"/>
+          <h:outputLabel value="#{bundle.CreateBancoLabel_saldo}" for="saldo" />
+          <h:inputText id="saldo" value="#{bancoController.selected.saldo}" title="#{bundle.CreateBancoTitle_saldo}" required="true" requiredMessage="#{bundle.CreateBancoRequiredMessage_saldo}"/>
+        </h:panelGrid>
+        <br />
+        <h:commandLink action="#{bancoController.create}" value="#{bundle.CreateBancoSaveLink}" />
+        <br />
+        <br />
+        <h:commandLink action="#{bancoController.prepareList}" value="#{bundle.CreateBancoShowAllLink}" immediate="true"/>
+        <br />
+        <br />
+        <h:link outcome="/index" value="#{bundle.CreateBancoIndexLink}"/>
+      </h:form>
+    </ui:define>
+  </ui:composition>
+
+</html>
