@@ -48,16 +48,17 @@
               </f:facet>
               <p:commandButton action="#{actividadController.prepareView}" value="#{bundle.ListActividadViewLink}" icon="ui-icon-search"/>
               <h:outputText value=" "/>
+              <br/><br/>
               <p:commandButton action="#{actividadController.prepareEdit}" value="#{bundle.ListActividadEditLink}" icon="ui-icon-wrench"/>
               <h:outputText value=" "/>
+              <br/><br/>
               <p:commandButton action="#{actividadController.destroy}" value="#{bundle.ListActividadDestroyLink}" icon="ui-icon-strash"/>
             </p:column>
           </p:dataTable>
         </h:panelGroup>
         <br />
         <p:commandButton action="#{actividadController.prepareCreate}" value="#{bundle.ListActividadCreateLink}" icon="ui-icon-newwin"/>
-        <br />
-        <br />
+        &nbsp;
         <p:button outcome="/index" value="#{bundle.ListActividadIndexLink}" icon="ui-icon-home"/>
       </h:form>
     </ui:define>

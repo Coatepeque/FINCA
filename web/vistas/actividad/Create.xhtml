@@ -13,8 +13,6 @@
     <ui:define name="body">
       <h:form id="centrar">
         <p:panelGrid columns="2">
-          <p:outputLabel value="#{bundle.CreateActividadLabel_idActividad}" for="idActividad" />
-          <p:inputText id="idActividad" value="#{actividadController.selected.idActividad}" title="#{bundle.CreateActividadTitle_idActividad}" required="true" requiredMessage="#{bundle.CreateActividadRequiredMessage_idActividad}"/>
           <p:outputLabel value="#{bundle.CreateActividadLabel_codigo}" for="codigo" />
           <p:inputText id="codigo" value="#{actividadController.selected.codigo}" title="#{bundle.CreateActividadTitle_codigo}" required="true" requiredMessage="#{bundle.CreateActividadRequiredMessage_codigo}"/>
           <p:outputLabel value="#{bundle.CreateActividadLabel_descripcion}" for="descripcion" />
@@ -26,11 +24,9 @@
         </p:panelGrid>
         <br />
         <p:commandButton action="#{actividadController.create}" value="#{bundle.CreateActividadSaveLink}" ajax="false" icon="ui-icon-disk" />
-        <br />
-        <br />
+        &nbsp;&nbsp; 
         <p:commandButton action="#{actividadController.prepareList}" value="#{bundle.CreateActividadShowAllLink}" immediate="true" icon="ui-icon-clipboard"/>
-        <br />
-        <br />
+        &nbsp;&nbsp;
         <p:button outcome="/index" value="#{bundle.CreateActividadIndexLink}" icon="ui-icon-home"/>
       </h:form>
     </ui:define>

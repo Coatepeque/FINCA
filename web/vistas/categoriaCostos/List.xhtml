@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
   <ui:composition template="/template.xhtml">
     <ui:define name="title">
@@ -11,50 +12,48 @@
     </ui:define>
     <ui:define name="body">
       <h:form styleClass="jsfcrud_list_form">
-        <h:panelGroup id="messagePanel" layout="block">
-          <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-        </h:panelGroup>
         <h:outputText escape="false" value="#{bundle.ListCategoriaCostosEmpty}" rendered="#{categoriaCostosController.items.rowCount == 0}"/>
         <h:panelGroup rendered="#{categoriaCostosController.items.rowCount > 0}">
           <h:outputText value="#{categoriaCostosController.pagination.pageFirstItem + 1}..#{categoriaCostosController.pagination.pageLastItem + 1}/#{categoriaCostosController.pagination.itemsCount}"/>&nbsp;
           <h:commandLink action="#{categoriaCostosController.previous}" value="#{bundle.Previous} #{categoriaCostosController.pagination.pageSize}" rendered="#{categoriaCostosController.pagination.hasPreviousPage}"/>&nbsp;
           <h:commandLink action="#{categoriaCostosController.next}" value="#{bundle.Next} #{categoriaCostosController.pagination.pageSize}" rendered="#{categoriaCostosController.pagination.hasNextPage}"/>&nbsp;
-          <h:dataTable value="#{categoriaCostosController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-            <h:column>
+          <p:dataTable value="#{categoriaCostosController.items}" var="item"  style="border:solid 1px">
+            <p:column>
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListCategoriaCostosTitle_idCategoriaCostos}"/>
               </f:facet>
               <h:outputText value="#{item.idCategoriaCostos}"/>
-            </h:column>
-            <h:column>
+            </p:column>
+            <p:column>
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListCategoriaCostosTitle_descripcion}"/>
               </f:facet>
               <h:outputText value="#{item.descripcion}"/>
-            </h:column>
-            <h:column>
+            </p:column>
+            <p:column>
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListCategoriaCostosTitle_idTipoCategoriaCostos}"/>
               </f:facet>
               <h:outputText value="#{item.idTipoCategoriaCostos}"/>
-            </h:column>
-            <h:column>
+            </p:column>
+            <p:column>
               <f:facet name="header">
                 <h:outputText value="&nbsp;"/>
               </f:facet>
-              <h:commandLink action="#{categoriaCostosController.prepareView}" value="#{bundle.ListCategoriaCostosViewLink}"/>
+              <p:commandButton action="#{categoriaCostosController.prepareView}" value="#{bundle.ListCategoriaCostosViewLink}" icon="ui-icon-search"/>
               <h:outputText value=" "/>
-              <h:commandLink action="#{categoriaCostosController.prepareEdit}" value="#{bundle.ListCategoriaCostosEditLink}"/>
+              <br/><br/>
+              <p:commandButton action="#{categoriaCostosController.prepareEdit}" value="#{bundle.ListCategoriaCostosEditLink}" icon="ui-icon-wrench"/>
               <h:outputText value=" "/>
-              <h:commandLink action="#{categoriaCostosController.destroy}" value="#{bundle.ListCategoriaCostosDestroyLink}"/>
-            </h:column>
-          </h:dataTable>
+              <br/><br/>
+              <p:commandButton action="#{categoriaCostosController.destroy}" value="#{bundle.ListCategoriaCostosDestroyLink}" icon="ui-icon-strash"/>
+            </p:column>
+          </p:dataTable>
         </h:panelGroup>
         <br />
-        <h:commandLink action="#{categoriaCostosController.prepareCreate}" value="#{bundle.ListCategoriaCostosCreateLink}"/>
-        <br />
-        <br />
-        <h:link outcome="/index" value="#{bundle.ListCategoriaCostosIndexLink}"/>
+        <p:commandButton action="#{categoriaCostosController.prepareCreate}" value="#{bundle.ListCategoriaCostosCreateLink}" icon="ui-icon-newwin"/>
+        &nbsp;
+        <p:button outcome="/index" value="#{bundle.ListCategoriaCostosIndexLink}" icon="ui-icon-home"/>
       </h:form>
     </ui:define>
   </ui:composition>
