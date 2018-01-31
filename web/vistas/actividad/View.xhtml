@@ -3,18 +3,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
   <ui:composition template="/template.xhtml">
     <ui:define name="title">
       <h:outputText value="#{bundle.ViewActividadTitle}"></h:outputText>
     </ui:define>
     <ui:define name="body">
-      <h:panelGroup id="messagePanel" layout="block">
-        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-      </h:panelGroup>
       <h:form>
-        <h:panelGrid columns="2">
+        <p:panelGrid columns="2">
           <h:outputText value="#{bundle.ViewActividadLabel_idActividad}"/>
           <h:outputText value="#{actividadController.selected.idActividad}" title="#{bundle.ViewActividadTitle_idActividad}"/>
           <h:outputText value="#{bundle.ViewActividadLabel_codigo}"/>
@@ -23,19 +21,19 @@
           <h:outputText value="#{actividadController.selected.descripcion}" title="#{bundle.ViewActividadTitle_descripcion}"/>
           <h:outputText value="#{bundle.ViewActividadLabel_idCentro}"/>
           <h:outputText value="#{actividadController.selected.idCentro}" title="#{bundle.ViewActividadTitle_idCentro}"/>
-        </h:panelGrid>
+        </p:panelGrid>
         <br />
-        <h:commandLink action="#{actividadController.destroyAndView}" value="#{bundle.ViewActividadDestroyLink}"/>
-        <br />
-        <br />
-        <h:link outcome="Edit" value="#{bundle.ViewActividadEditLink}"/>
-        <br />
-        <h:commandLink action="#{actividadController.prepareCreate}" value="#{bundle.ViewActividadCreateLink}" />
-        <br />
-        <h:commandLink action="#{actividadController.prepareList}" value="#{bundle.ViewActividadShowAllLink}"/>
+        <p:commandButton action="#{actividadController.destroyAndView}" value="#{bundle.ViewActividadDestroyLink}" ajax="false" icon="ui-icon-trash"/>
         <br />
         <br />
-        <h:link outcome="/index" value="#{bundle.ViewActividadIndexLink}"/>
+        <p:button outcome="Edit" value="#{bundle.ViewActividadEditLink}" icon="ui-icon-wrench"/>
+        <br />
+        <p:commandButton action="#{actividadController.prepareCreate}" value="#{bundle.ViewActividadCreateLink}" icon="ui-icon-newwin"/>
+        <br />
+        <p:commandButton action="#{actividadController.prepareList}" value="#{bundle.ViewActividadShowAllLink}" icon="ui-icon-clipboard"/>
+        <br />
+        <br />
+        <p:button outcome="/index" value="#{bundle.ViewActividadIndexLink}" icon="ui-icon-home"/>
 
       </h:form>
     </ui:define>

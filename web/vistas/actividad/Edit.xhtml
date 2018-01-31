@@ -3,38 +3,36 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
   <ui:composition template="/template.xhtml">
     <ui:define name="title">
       <h:outputText value="#{bundle.EditActividadTitle}"></h:outputText>
     </ui:define>
     <ui:define name="body">
-      <h:panelGroup id="messagePanel" layout="block">
-        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-      </h:panelGroup>
-      <h:form>
-        <h:panelGrid columns="2">
-          <h:outputLabel value="#{bundle.EditActividadLabel_idActividad}" for="idActividad" />
-          <h:inputText id="idActividad" value="#{actividadController.selected.idActividad}" title="#{bundle.EditActividadTitle_idActividad}" required="true" requiredMessage="#{bundle.EditActividadRequiredMessage_idActividad}"/>
-          <h:outputLabel value="#{bundle.EditActividadLabel_codigo}" for="codigo" />
-          <h:inputText id="codigo" value="#{actividadController.selected.codigo}" title="#{bundle.EditActividadTitle_codigo}" required="true" requiredMessage="#{bundle.EditActividadRequiredMessage_codigo}"/>
-          <h:outputLabel value="#{bundle.EditActividadLabel_descripcion}" for="descripcion" />
-          <h:inputText id="descripcion" value="#{actividadController.selected.descripcion}" title="#{bundle.EditActividadTitle_descripcion}" required="true" requiredMessage="#{bundle.EditActividadRequiredMessage_descripcion}"/>
-          <h:outputLabel value="#{bundle.EditActividadLabel_idCentro}" for="idCentro" />
-          <h:selectOneMenu id="idCentro" value="#{actividadController.selected.idCentro}" title="#{bundle.EditActividadTitle_idCentro}" required="true" requiredMessage="#{bundle.EditActividadRequiredMessage_idCentro}">
+      <h:form id="centrar">
+        <p:panelGrid columns="2">
+          <p:outputLabel value="#{bundle.EditActividadLabel_idActividad}" for="idActividad" />
+          <p:inputText id="idActividad" value="#{actividadController.selected.idActividad}" title="#{bundle.EditActividadTitle_idActividad}" required="true" requiredMessage="#{bundle.EditActividadRequiredMessage_idActividad}"/>
+          <p:outputLabel value="#{bundle.EditActividadLabel_codigo}" for="codigo" />
+          <p:inputText id="codigo" value="#{actividadController.selected.codigo}" title="#{bundle.EditActividadTitle_codigo}" required="true" requiredMessage="#{bundle.EditActividadRequiredMessage_codigo}"/>
+          <p:outputLabel value="#{bundle.EditActividadLabel_descripcion}" for="descripcion" />
+          <p:inputText id="descripcion" value="#{actividadController.selected.descripcion}" title="#{bundle.EditActividadTitle_descripcion}" required="true" requiredMessage="#{bundle.EditActividadRequiredMessage_descripcion}"/>
+          <p:outputLabel value="#{bundle.EditActividadLabel_idCentro}" for="idCentro" />
+          <p:selectOneMenu id="idCentro" value="#{actividadController.selected.idCentro}" title="#{bundle.EditActividadTitle_idCentro}" required="true" requiredMessage="#{bundle.EditActividadRequiredMessage_idCentro}">
             <f:selectItems value="#{centroController.itemsAvailableSelectOne}"/>
-          </h:selectOneMenu>
-        </h:panelGrid>
-        <h:commandLink action="#{actividadController.update}" value="#{bundle.EditActividadSaveLink}"/>
+          </p:selectOneMenu>
+        </p:panelGrid>
+        <p:commandButton action="#{actividadController.update}" value="#{bundle.EditActividadSaveLink}" ajax="false" icon="ui-icon-disk"/>
         <br />
         <br />
-        <h:link outcome="View" value="#{bundle.EditActividadViewLink}"/>
+        <p:button outcome="View" value="#{bundle.EditActividadViewLink}" icon="ui-icon-search" />
         <br />
-        <h:commandLink action="#{actividadController.prepareList}" value="#{bundle.EditActividadShowAllLink}" immediate="true"/>
+        <p:commandButton action="#{actividadController.prepareList}" value="#{bundle.EditActividadShowAllLink}" immediate="true" icon="ui-icon-clipboard"/>
         <br />
         <br />
-        <h:link outcome="/index" value="#{bundle.EditActividadIndexLink}" />
+        <p:button outcome="/index" value="#{bundle.EditActividadIndexLink}" icon="ui-icon-home"/>
       </h:form>
     </ui:define>
   </ui:composition>

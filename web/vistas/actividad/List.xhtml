@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
   <ui:composition template="/template.xhtml">
     <ui:define name="title">
@@ -11,56 +12,53 @@
     </ui:define>
     <ui:define name="body">
       <h:form styleClass="jsfcrud_list_form">
-        <h:panelGroup id="messagePanel" layout="block">
-          <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-        </h:panelGroup>
         <h:outputText escape="false" value="#{bundle.ListActividadEmpty}" rendered="#{actividadController.items.rowCount == 0}"/>
         <h:panelGroup rendered="#{actividadController.items.rowCount > 0}">
           <h:outputText value="#{actividadController.pagination.pageFirstItem + 1}..#{actividadController.pagination.pageLastItem + 1}/#{actividadController.pagination.itemsCount}"/>&nbsp;
           <h:commandLink action="#{actividadController.previous}" value="#{bundle.Previous} #{actividadController.pagination.pageSize}" rendered="#{actividadController.pagination.hasPreviousPage}"/>&nbsp;
           <h:commandLink action="#{actividadController.next}" value="#{bundle.Next} #{actividadController.pagination.pageSize}" rendered="#{actividadController.pagination.hasNextPage}"/>&nbsp;
-          <h:dataTable value="#{actividadController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-            <h:column>
+          <p:dataTable value="#{actividadController.items}" var="item" style="border:solid 1px">
+            <p:column>
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListActividadTitle_idActividad}"/>
               </f:facet>
               <h:outputText value="#{item.idActividad}"/>
-            </h:column>
-            <h:column>
+            </p:column>
+            <p:column>
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListActividadTitle_codigo}"/>
               </f:facet>
               <h:outputText value="#{item.codigo}"/>
-            </h:column>
-            <h:column>
+            </p:column>
+            <p:column>
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListActividadTitle_descripcion}"/>
               </f:facet>
               <h:outputText value="#{item.descripcion}"/>
-            </h:column>
-            <h:column>
+            </p:column>
+            <p:column>
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListActividadTitle_idCentro}"/>
               </f:facet>
               <h:outputText value="#{item.idCentro}"/>
-            </h:column>
-            <h:column>
+            </p:column>
+            <p:column>
               <f:facet name="header">
                 <h:outputText value="&nbsp;"/>
               </f:facet>
-              <h:commandLink action="#{actividadController.prepareView}" value="#{bundle.ListActividadViewLink}"/>
+              <p:commandButton action="#{actividadController.prepareView}" value="#{bundle.ListActividadViewLink}" icon="ui-icon-search"/>
               <h:outputText value=" "/>
-              <h:commandLink action="#{actividadController.prepareEdit}" value="#{bundle.ListActividadEditLink}"/>
+              <p:commandButton action="#{actividadController.prepareEdit}" value="#{bundle.ListActividadEditLink}" icon="ui-icon-wrench"/>
               <h:outputText value=" "/>
-              <h:commandLink action="#{actividadController.destroy}" value="#{bundle.ListActividadDestroyLink}"/>
-            </h:column>
-          </h:dataTable>
+              <p:commandButton action="#{actividadController.destroy}" value="#{bundle.ListActividadDestroyLink}" icon="ui-icon-strash"/>
+            </p:column>
+          </p:dataTable>
         </h:panelGroup>
         <br />
-        <h:commandLink action="#{actividadController.prepareCreate}" value="#{bundle.ListActividadCreateLink}"/>
+        <p:commandButton action="#{actividadController.prepareCreate}" value="#{bundle.ListActividadCreateLink}" icon="ui-icon-newwin"/>
         <br />
         <br />
-        <h:link outcome="/index" value="#{bundle.ListActividadIndexLink}"/>
+        <p:button outcome="/index" value="#{bundle.ListActividadIndexLink}" icon="ui-icon-home"/>
       </h:form>
     </ui:define>
   </ui:composition>
