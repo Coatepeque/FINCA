@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+  <ui:composition template="/template.xhtml">
+    <ui:define name="title">
+      <h:outputText value="#{bundle.EditSubActividadTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="body">
+      <h:panelGroup id="messagePanel" layout="block">
+        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+      </h:panelGroup>
+      <h:form>
+        <h:panelGrid columns="2">
+          <h:outputLabel value="#{bundle.EditSubActividadLabel_idSubActividad}" for="idSubActividad" />
+          <h:inputText id="idSubActividad" value="#{subActividadController.selected.idSubActividad}" title="#{bundle.EditSubActividadTitle_idSubActividad}" required="true" requiredMessage="#{bundle.EditSubActividadRequiredMessage_idSubActividad}"/>
+          <h:outputLabel value="#{bundle.EditSubActividadLabel_codigo}" for="codigo" />
+          <h:inputText id="codigo" value="#{subActividadController.selected.codigo}" title="#{bundle.EditSubActividadTitle_codigo}" required="true" requiredMessage="#{bundle.EditSubActividadRequiredMessage_codigo}"/>
+          <h:outputLabel value="#{bundle.EditSubActividadLabel_descripcion}" for="descripcion" />
+          <h:inputText id="descripcion" value="#{subActividadController.selected.descripcion}" title="#{bundle.EditSubActividadTitle_descripcion}" required="true" requiredMessage="#{bundle.EditSubActividadRequiredMessage_descripcion}"/>
+          <h:outputLabel value="#{bundle.EditSubActividadLabel_idActividad}" for="idActividad" />
+          <h:selectOneMenu id="idActividad" value="#{subActividadController.selected.idActividad}" title="#{bundle.EditSubActividadTitle_idActividad}" required="true" requiredMessage="#{bundle.EditSubActividadRequiredMessage_idActividad}">
+            <f:selectItems value="#{actividadController.itemsAvailableSelectOne}"/>
+          </h:selectOneMenu>
+        </h:panelGrid>
+        <h:commandLink action="#{subActividadController.update}" value="#{bundle.EditSubActividadSaveLink}"/>
+        <br />
+        <br />
+        <h:link outcome="View" value="#{bundle.EditSubActividadViewLink}"/>
+        <br />
+        <h:commandLink action="#{subActividadController.prepareList}" value="#{bundle.EditSubActividadShowAllLink}" immediate="true"/>
+        <br />
+        <br />
+        <h:link outcome="/index" value="#{bundle.EditSubActividadIndexLink}" />
+      </h:form>
+    </ui:define>
+  </ui:composition>
+
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+  <ui:composition template="/template.xhtml">
+    <ui:define name="title">
+      <h:outputText value="#{bundle.ViewEmpleadoTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="body">
+      <h:panelGroup id="messagePanel" layout="block">
+        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+      </h:panelGroup>
+      <h:form>
+        <h:panelGrid columns="2">
+          <h:outputText value="#{bundle.ViewEmpleadoLabel_idEmpleado}"/>
+          <h:outputText value="#{empleadoController.selected.idEmpleado}" title="#{bundle.ViewEmpleadoTitle_idEmpleado}"/>
+          <h:outputText value="#{bundle.ViewEmpleadoLabel_nombres}"/>
+          <h:outputText value="#{empleadoController.selected.nombres}" title="#{bundle.ViewEmpleadoTitle_nombres}"/>
+          <h:outputText value="Apellidos"/>
+          <h:outputText value="#{empleadoController.selected.apellidos}" title="Apellidos"/>
+          <h:outputText value="#{bundle.ViewEmpleadoLabel_dpi}"/>
+          <h:outputText value="#{empleadoController.selected.dpi}" title="#{bundle.ViewEmpleadoTitle_dpi}"/>
+          <h:outputText value="#{bundle.ViewEmpleadoLabel_extendido}"/>
+          <h:outputText value="#{empleadoController.selected.extendido}" title="#{bundle.ViewEmpleadoTitle_extendido}"/>
+          <h:outputText value="#{bundle.ViewEmpleadoLabel_nit}"/>
+          <h:outputText value="#{empleadoController.selected.nit}" title="#{bundle.ViewEmpleadoTitle_nit}"/>
+          <h:outputText value="#{bundle.ViewEmpleadoLabel_sexo}"/>
+          <h:outputText value="#{empleadoController.selected.sexo}" title="#{bundle.ViewEmpleadoTitle_sexo}"/>
+          <h:outputText value="#{bundle.ViewEmpleadoLabel_fechaNacimiento}"/>
+          <h:outputText value="#{empleadoController.selected.fechaNacimiento}" title="#{bundle.ViewEmpleadoTitle_fechaNacimiento}">
+            <f:convertDateTime pattern="MM/dd/yyyy" />
+          </h:outputText>
+          <h:outputText value="#{bundle.ViewEmpleadoLabel_foto}"/>
+          <h:outputText value="#{empleadoController.selected.foto}" title="#{bundle.ViewEmpleadoTitle_foto}"/>
+          <h:outputText value="#{bundle.ViewEmpleadoLabel_fechaIngreso}"/>
+          <h:outputText value="#{empleadoController.selected.fechaIngreso}" title="#{bundle.ViewEmpleadoTitle_fechaIngreso}">
+            <f:convertDateTime pattern="MM/dd/yyyy" />
+          </h:outputText>
+          <h:outputText value="#{bundle.ViewEmpleadoLabel_activo}"/>
+          <h:outputText value="#{empleadoController.selected.activo}" title="#{bundle.ViewEmpleadoTitle_activo}"/>
+          <h:outputText value="#{bundle.ViewEmpleadoLabel_banco}"/>
+          <h:outputText value="#{empleadoController.selected.banco}" title="#{bundle.ViewEmpleadoTitle_banco}"/>
+          <h:outputText value="#{bundle.ViewEmpleadoLabel_idFinca}"/>
+          <h:outputText value="#{empleadoController.selected.idFinca}" title="#{bundle.ViewEmpleadoTitle_idFinca}"/>
+          <h:outputText value="#{bundle.ViewEmpleadoLabel_idTipoEmpleado}"/>
+          <h:outputText value="#{empleadoController.selected.idTipoEmpleado}" title="#{bundle.ViewEmpleadoTitle_idTipoEmpleado}"/>
+        </h:panelGrid>
+        <br />
+        <h:commandLink action="#{empleadoController.destroyAndView}" value="#{bundle.ViewEmpleadoDestroyLink}"/>
+        <br />
+        <br />
+        <h:link outcome="Edit" value="#{bundle.ViewEmpleadoEditLink}"/>
+        <br />
+        <h:commandLink action="#{empleadoController.prepareCreate}" value="#{bundle.ViewEmpleadoCreateLink}" />
+        <br />
+        <h:commandLink action="#{empleadoController.prepareList}" value="#{bundle.ViewEmpleadoShowAllLink}"/>
+        <br />
+        <br />
+        <h:link outcome="/index" value="#{bundle.ViewEmpleadoIndexLink}"/>
+
+      </h:form>
+    </ui:define>
+  </ui:composition>
+
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+  <ui:composition template="/template.xhtml">
+    <ui:define name="title">
+      <h:outputText value="#{bundle.ListActividadTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="body">
+      <h:form styleClass="jsfcrud_list_form">
+        <h:panelGroup id="messagePanel" layout="block">
+          <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+        </h:panelGroup>
+        <h:outputText escape="false" value="#{bundle.ListActividadEmpty}" rendered="#{actividadController.items.rowCount == 0}"/>
+        <h:panelGroup rendered="#{actividadController.items.rowCount > 0}">
+          <h:outputText value="#{actividadController.pagination.pageFirstItem + 1}..#{actividadController.pagination.pageLastItem + 1}/#{actividadController.pagination.itemsCount}"/>&nbsp;
+          <h:commandLink action="#{actividadController.previous}" value="#{bundle.Previous} #{actividadController.pagination.pageSize}" rendered="#{actividadController.pagination.hasPreviousPage}"/>&nbsp;
+          <h:commandLink action="#{actividadController.next}" value="#{bundle.Next} #{actividadController.pagination.pageSize}" rendered="#{actividadController.pagination.hasNextPage}"/>&nbsp;
+          <h:dataTable value="#{actividadController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+            <h:column>
+              <f:facet name="header">
+                <h:outputText value="#{bundle.ListActividadTitle_idActividad}"/>
+              </f:facet>
+              <h:outputText value="#{item.idActividad}"/>
+            </h:column>
+            <h:column>
+              <f:facet name="header">
+                <h:outputText value="#{bundle.ListActividadTitle_codigo}"/>
+              </f:facet>
+              <h:outputText value="#{item.codigo}"/>
+            </h:column>
+            <h:column>
+              <f:facet name="header">
+                <h:outputText value="#{bundle.ListActividadTitle_descripcion}"/>
+              </f:facet>
+              <h:outputText value="#{item.descripcion}"/>
+            </h:column>
+            <h:column>
+              <f:facet name="header">
+                <h:outputText value="#{bundle.ListActividadTitle_idCentro}"/>
+              </f:facet>
+              <h:outputText value="#{item.idCentro}"/>
+            </h:column>
+            <h:column>
+              <f:facet name="header">
+                <h:outputText value="&nbsp;"/>
+              </f:facet>
+              <h:commandLink action="#{actividadController.prepareView}" value="#{bundle.ListActividadViewLink}"/>
+              <h:outputText value=" "/>
+              <h:commandLink action="#{actividadController.prepareEdit}" value="#{bundle.ListActividadEditLink}"/>
+              <h:outputText value=" "/>
+              <h:commandLink action="#{actividadController.destroy}" value="#{bundle.ListActividadDestroyLink}"/>
+            </h:column>
+          </h:dataTable>
+        </h:panelGroup>
+        <br />
+        <h:commandLink action="#{actividadController.prepareCreate}" value="#{bundle.ListActividadCreateLink}"/>
+        <br />
+        <br />
+        <h:link outcome="/index" value="#{bundle.ListActividadIndexLink}"/>
+      </h:form>
+    </ui:define>
+  </ui:composition>
+
+</html>

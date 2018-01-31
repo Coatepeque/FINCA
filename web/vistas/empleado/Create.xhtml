@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+  <ui:composition template="/template.xhtml">
+    <ui:define name="title">
+      <h:outputText value="#{bundle.CreateEmpleadoTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="body">
+      <h:panelGroup id="messagePanel" layout="block">
+        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+      </h:panelGroup>
+      <h:form>
+        <p:panelGrid columns="2">
+          <h:outputLabel value="#{bundle.CreateEmpleadoLabel_nombres}" for="nombres" />
+          <h:inputText id="nombres" value="#{empleadoController.selected.nombres}" title="#{bundle.CreateEmpleadoTitle_nombres}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_nombres}"/>
+          <h:outputLabel value="Apellidos" for="apellidos" />
+          <h:inputText id="apellidos" value="#{empleadoController.selected.apellidos}" title="Apellidos" required="true" requiredMessage="Ingresa el apellido"/>
+          <h:outputLabel value="#{bundle.CreateEmpleadoLabel_dpi}" for="dpi" />
+          <h:inputText id="dpi" value="#{empleadoController.selected.dpi}" title="#{bundle.CreateEmpleadoTitle_dpi}" />
+          <h:outputLabel value="#{bundle.CreateEmpleadoLabel_extendido}" for="extendido" />
+          <h:inputText id="extendido" value="#{empleadoController.selected.extendido}" title="#{bundle.CreateEmpleadoTitle_extendido}" />
+          <h:outputLabel value="#{bundle.CreateEmpleadoLabel_nit}" for="nit" />
+          <h:inputText id="nit" value="#{empleadoController.selected.nit}" title="#{bundle.CreateEmpleadoTitle_nit}" />
+          <h:outputLabel value="#{bundle.CreateEmpleadoLabel_sexo}" for="sexo" />
+          <h:inputText id="sexo" value="#{empleadoController.selected.sexo}" title="#{bundle.CreateEmpleadoTitle_sexo}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_sexo}"/>
+          <h:outputLabel value="#{bundle.CreateEmpleadoLabel_fechaNacimiento}" for="fechaNacimiento" />
+          <p:calendar id="fechaNacimiento" value="#{empleadoController.selected.fechaNacimiento}" title="#{bundle.CreateEmpleadoTitle_fechaNacimiento}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_fechaNacimiento}">
+            <f:convertDateTime pattern="dd/MM/yyyy" />
+          </p:calendar>
+          <h:outputLabel value="#{bundle.CreateEmpleadoLabel_foto}" for="foto" />
+          <h:inputTextarea rows="4" cols="30" id="foto" value="#{empleadoController.selected.foto}" title="#{bundle.CreateEmpleadoTitle_foto}" />
+          <h:outputLabel value="#{bundle.CreateEmpleadoLabel_fechaIngreso}" for="fechaIngreso" />
+          <p:calendar id="fechaIngreso" value="#{empleadoController.selected.fechaIngreso}" title="#{bundle.CreateEmpleadoTitle_fechaIngreso}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_fechaIngreso}">
+            <f:convertDateTime pattern="dd/MM/yyyy" />
+          </p:calendar>
+          <h:outputLabel value="#{bundle.CreateEmpleadoLabel_activo}" for="activo" />
+          <h:inputText id="activo" value="#{empleadoController.selected.activo}" title="#{bundle.CreateEmpleadoTitle_activo}" />
+          <h:outputLabel value="#{bundle.CreateEmpleadoLabel_banco}" for="banco" />
+          <h:inputText id="banco" value="#{empleadoController.selected.banco}" title="#{bundle.CreateEmpleadoTitle_banco}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_banco}"/>
+          <h:outputLabel value="#{bundle.CreateEmpleadoLabel_idFinca}" for="idFinca" />
+          <h:selectOneMenu id="idFinca" value="#{empleadoController.selected.idFinca}" title="#{bundle.CreateEmpleadoTitle_idFinca}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_idFinca}">
+            <f:selectItems value="#{fincaController.itemsAvailableSelectOne}"/>
+          </h:selectOneMenu>
+          <h:outputLabel value="#{bundle.CreateEmpleadoLabel_idTipoEmpleado}" for="idTipoEmpleado" />
+          <h:selectOneMenu id="idTipoEmpleado" value="#{empleadoController.selected.idTipoEmpleado}" title="#{bundle.CreateEmpleadoTitle_idTipoEmpleado}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_idTipoEmpleado}">
+            <f:selectItems value="#{tipoEmpleadoController.itemsAvailableSelectOne}"/>
+          </h:selectOneMenu>
+        </p:panelGrid>
+        <br />
+        <h:commandLink action="#{empleadoController.create}" value="#{bundle.CreateEmpleadoSaveLink}" />
+        <br />
+        <br />
+        <h:commandLink action="#{empleadoController.prepareList}" value="#{bundle.CreateEmpleadoShowAllLink}" immediate="true"/>
+        <br />
+        <br />
+        <h:link outcome="/index" value="#{bundle.CreateEmpleadoIndexLink}"/>
+      </h:form>
+    </ui:define>
+  </ui:composition>
+
+</html>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+  <ui:composition template="/template.xhtml">
+    <ui:define name="title">
+      <h:outputText value="#{bundle.ListPlanillaTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="body">
+      <h:form styleClass="jsfcrud_list_form">
+        <h:panelGroup id="messagePanel" layout="block">
+          <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+        </h:panelGroup>
+        <h:outputText escape="false" value="#{bundle.ListPlanillaEmpty}" rendered="#{planillaController.items.rowCount == 0}"/>
+        <h:panelGroup rendered="#{planillaController.items.rowCount > 0}">
+          <h:outputText value="#{planillaController.pagination.pageFirstItem + 1}..#{planillaController.pagination.pageLastItem + 1}/#{planillaController.pagination.itemsCount}"/>&nbsp;
+          <h:commandLink action="#{planillaController.previous}" value="#{bundle.Previous} #{planillaController.pagination.pageSize}" rendered="#{planillaController.pagination.hasPreviousPage}"/>&nbsp;
+          <h:commandLink action="#{planillaController.next}" value="#{bundle.Next} #{planillaController.pagination.pageSize}" rendered="#{planillaController.pagination.hasNextPage}"/>&nbsp;
+          <p:dataTable value="#{planillaController.items}" var="item" style="border:solid 1px" id="planilla">
+            <f:facet name="header">
+                        <p:commandButton id="toggler" type="button" value="Quitar Columnas" icon="ui-icon-calculator" />
+                        <p:columnToggler datasource="planilla" trigger="toggler" />
+                    </f:facet> 
+            <p:column >
+              <f:facet name="header">
+                <h:outputText value="#{bundle.ListPlanillaTitle_idPlanilla}"/>
+              </f:facet>
+              <h:outputText value="#{item.idPlanilla}"/>
+            </p:column>
+            <p:column filterBy="#{item.salarioBase}" sortBy="#{item.salarioBase}">
+              <f:facet name="header">
+                <h:outputText value="#{bundle.ListPlanillaTitle_salarioBase}"/>
+              </f:facet>
+              <h:outputText value="#{item.salarioBase}"/>
+            </p:column>
+            <p:column>
+              <f:facet name="header">
+                <h:outputText value="#{bundle.ListPlanillaTitle_descuentos}"/>
+              </f:facet>
+              <h:outputText value="#{item.descuentos}"/>
+            </p:column>
+            <p:column>
+              <f:facet name="header">
+                <h:outputText value="#{bundle.ListPlanillaTitle_igss}"/>
+              </f:facet>
+              <h:outputText value="#{item.igss}"/>
+            </p:column>
+            <p:column>
+              <f:facet name="header">
+                <h:outputText value="#{bundle.ListPlanillaTitle_bonificación}"/>
+              </f:facet>
+              <h:outputText value="#{item.bonificación}"/>
+            </p:column>
+            <p:column>
+              <f:facet name="header">
+                <h:outputText value="#{bundle.ListPlanillaTitle_salarioLiquido}"/>
+              </f:facet>
+              <h:outputText value="#{item.salarioLiquido}"/>
+            </p:column>
+            <p:column filterBy="#{item.idEmpleado.nombres}" sortBy="#{item.idEmpleado.nombres}">
+              <f:facet name="header">
+                <h:outputText value="#{bundle.ListPlanillaTitle_idEmpleado}"/>
+              </f:facet>
+              <h:outputText value="#{item.idEmpleado.nombres}"/>
+            </p:column>
+            <p:column>
+              <f:facet name="header">
+                <h:outputText value="&nbsp;"/>
+              </f:facet>
+              <h:commandLink action="#{planillaController.prepareView}" value="#{bundle.ListPlanillaViewLink}"/>
+              <h:outputText value=" "/>
+              <h:commandLink action="#{planillaController.prepareEdit}" value="#{bundle.ListPlanillaEditLink}"/>
+              <h:outputText value=" "/>
+              <h:commandLink action="#{planillaController.destroy}" value="#{bundle.ListPlanillaDestroyLink}"/>
+            </p:column>
+          </p:dataTable>
+        </h:panelGroup>
+        <br />
+        <h:commandLink action="#{planillaController.prepareCreate}" value="#{bundle.ListPlanillaCreateLink}"/>
+        <br />
+        <br />
+        <h:link outcome="/index" value="#{bundle.ListPlanillaIndexLink}"/>
+      </h:form>
+    </ui:define>
+  </ui:composition>
+
+</html>

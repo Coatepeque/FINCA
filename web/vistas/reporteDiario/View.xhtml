@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+  <ui:composition template="/template.xhtml">
+    <ui:define name="title">
+      <h:outputText value="#{bundle.ViewReporteDiarioTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="body">
+      <h:panelGroup id="messagePanel" layout="block">
+        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+      </h:panelGroup>
+      <h:form>
+        <h:panelGrid columns="2">
+          <h:outputText value="#{bundle.ViewReporteDiarioLabel_idReporteDiario}"/>
+          <h:outputText value="#{reporteDiarioController.selected.idReporteDiario}" title="#{bundle.ViewReporteDiarioTitle_idReporteDiario}"/>
+          <h:outputText value="#{bundle.ViewReporteDiarioLabel_descripcion}"/>
+          <h:outputText value="#{reporteDiarioController.selected.descripcion}" title="#{bundle.ViewReporteDiarioTitle_descripcion}"/>
+          <h:outputText value="#{bundle.ViewReporteDiarioLabel_fecha}"/>
+          <h:outputText value="#{reporteDiarioController.selected.fecha}" title="#{bundle.ViewReporteDiarioTitle_fecha}">
+            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+          </h:outputText>
+          <h:outputText value="#{bundle.ViewReporteDiarioLabel_horainicio}"/>
+          <h:outputText value="#{reporteDiarioController.selected.horainicio}" title="#{bundle.ViewReporteDiarioTitle_horainicio}">
+            <f:convertDateTime pattern="HH:mm:ss" />
+          </h:outputText>
+          <h:outputText value="#{bundle.ViewReporteDiarioLabel_horafinal}"/>
+          <h:outputText value="#{reporteDiarioController.selected.horafinal}" title="#{bundle.ViewReporteDiarioTitle_horafinal}">
+            <f:convertDateTime pattern="HH:mm:ss" />
+          </h:outputText>
+          <h:outputText value="#{bundle.ViewReporteDiarioLabel_idCostos}"/>
+          <h:outputText value="#{reporteDiarioController.selected.idCostos}" title="#{bundle.ViewReporteDiarioTitle_idCostos}"/>
+          <h:outputText value="#{bundle.ViewReporteDiarioLabel_idEmpleado}"/>
+          <h:outputText value="#{reporteDiarioController.selected.idEmpleado}" title="#{bundle.ViewReporteDiarioTitle_idEmpleado}"/>
+          <h:outputText value="#{bundle.ViewReporteDiarioLabel_idSubActividad}"/>
+          <h:outputText value="#{reporteDiarioController.selected.idSubActividad}" title="#{bundle.ViewReporteDiarioTitle_idSubActividad}"/>
+        </h:panelGrid>
+        <br />
+        <h:commandLink action="#{reporteDiarioController.destroyAndView}" value="#{bundle.ViewReporteDiarioDestroyLink}"/>
+        <br />
+        <br />
+        <h:link outcome="Edit" value="#{bundle.ViewReporteDiarioEditLink}"/>
+        <br />
+        <h:commandLink action="#{reporteDiarioController.prepareCreate}" value="#{bundle.ViewReporteDiarioCreateLink}" />
+        <br />
+        <h:commandLink action="#{reporteDiarioController.prepareList}" value="#{bundle.ViewReporteDiarioShowAllLink}"/>
+        <br />
+        <br />
+        <h:link outcome="/index" value="#{bundle.ViewReporteDiarioIndexLink}"/>
+
+      </h:form>
+    </ui:define>
+  </ui:composition>
+
+</html>

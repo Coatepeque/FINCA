@@ -1,0 +1,148 @@
+root { 
+    display: block;
+}
+#centrar{
+    margin: 0 auto;
+    width: 30%;
+}
+#centrar2{
+    margin: 0 auto;
+    width: 60%;
+}
+#title{
+    color: white; 
+    text-align: center;
+}
+
+#top{
+    position: fixed;
+    vertical-align: top;
+    margin-left: 180px;
+    margin-right: 165px;
+    
+    z-index: 100;
+    left: 0;
+    top: 0;
+
+}
+
+#left{
+       position:fixed;
+       left:4px;
+       top:4em;
+       width:145px;
+       height: 40%;
+       
+       padding-left: 1.5em;
+}
+
+#body{
+    top:-1.5em;
+    position:relative;
+    margin-left: 205px;
+    margin-right: 135px;
+    padding: 5px;
+    margin-bottom: 85px;
+}
+
+#body2{
+    top:3em;
+    position:relative;
+    margin-left: 205px;
+    margin-right: 350px;
+    padding: 5px;
+    margin-bottom: 85px;
+    text-align:  center;
+}
+
+#body3{
+    top:13em;
+    position:relative;
+    margin-left: 700px;
+    margin-right: 700px;
+    padding: 5px;
+    margin-bottom: 85px;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #3a4f54;
+    background: #00a7ed; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left, #00a7ed, white); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #00a7ed, white); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #00a7ed, white); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, white , #00a7ed);
+    font-size: small;
+}
+
+a {
+    color: #e33b06;
+}
+
+table {
+    text-align: center;
+    empty-cells: show;
+}
+
+form.jsfcrud_list_form th, td th {
+    font-size: x-small;
+    color: #4e6a71;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-color: #b2d5d6;
+    border-bottom-color: #b2d5d6;
+    border-left-color: #90b4bd;
+    border-right-color: #90b4bd;
+    letter-spacing: 3px;
+    text-align: left;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+    padding-right: 6px;
+    background-color: #b2d5d6;
+}
+
+td {
+    vertical-align: top;
+    padding-bottom: 8px;
+    font-size: small;
+}
+
+form.jsfcrud_list_form td, td td {
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-color: #b2d5d6;
+    border-bottom-color: #b2d5d6;
+    border-left-color: #b2d5d6;
+    border-right-color: #b2d5d6;
+    vertical-align: baseline;
+    padding-bottom: 0px;
+}
+
+tr.jsfcrud_odd_row {
+    background-color: #fefeff;
+    color: #4e6a71;
+}
+
+
+tr.jsfcrud_even_row {
+    background-color: #eff5fa;
+    color: #4e6a71;
+}
+
+#busyImage {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}

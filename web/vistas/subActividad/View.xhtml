@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+  <ui:composition template="/template.xhtml">
+    <ui:define name="title">
+      <h:outputText value="#{bundle.ViewSubActividadTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="body">
+      <h:panelGroup id="messagePanel" layout="block">
+        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+      </h:panelGroup>
+      <h:form>
+        <h:panelGrid columns="2">
+          <h:outputText value="#{bundle.ViewSubActividadLabel_idSubActividad}"/>
+          <h:outputText value="#{subActividadController.selected.idSubActividad}" title="#{bundle.ViewSubActividadTitle_idSubActividad}"/>
+          <h:outputText value="#{bundle.ViewSubActividadLabel_codigo}"/>
+          <h:outputText value="#{subActividadController.selected.codigo}" title="#{bundle.ViewSubActividadTitle_codigo}"/>
+          <h:outputText value="#{bundle.ViewSubActividadLabel_descripcion}"/>
+          <h:outputText value="#{subActividadController.selected.descripcion}" title="#{bundle.ViewSubActividadTitle_descripcion}"/>
+          <h:outputText value="#{bundle.ViewSubActividadLabel_idActividad}"/>
+          <h:outputText value="#{subActividadController.selected.idActividad}" title="#{bundle.ViewSubActividadTitle_idActividad}"/>
+        </h:panelGrid>
+        <br />
+        <h:commandLink action="#{subActividadController.destroyAndView}" value="#{bundle.ViewSubActividadDestroyLink}"/>
+        <br />
+        <br />
+        <h:link outcome="Edit" value="#{bundle.ViewSubActividadEditLink}"/>
+        <br />
+        <h:commandLink action="#{subActividadController.prepareCreate}" value="#{bundle.ViewSubActividadCreateLink}" />
+        <br />
+        <h:commandLink action="#{subActividadController.prepareList}" value="#{bundle.ViewSubActividadShowAllLink}"/>
+        <br />
+        <br />
+        <h:link outcome="/index" value="#{bundle.ViewSubActividadIndexLink}"/>
+
+      </h:form>
+    </ui:define>
+  </ui:composition>
+
+</html>

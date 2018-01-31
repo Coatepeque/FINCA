@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+  <ui:composition template="/template.xhtml">
+    <ui:define name="title">
+      <h:outputText value="#{bundle.ViewPlanillaTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="body">
+      <h:panelGroup id="messagePanel" layout="block">
+        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+      </h:panelGroup>
+      <h:form>
+        <h:panelGrid columns="2">
+          <h:outputText value="#{bundle.ViewPlanillaLabel_idPlanilla}"/>
+          <h:outputText value="#{planillaController.selected.idPlanilla}" title="#{bundle.ViewPlanillaTitle_idPlanilla}"/>
+          <h:outputText value="#{bundle.ViewPlanillaLabel_salarioBase}"/>
+          <h:outputText value="#{planillaController.selected.salarioBase}" title="#{bundle.ViewPlanillaTitle_salarioBase}"/>
+          <h:outputText value="#{bundle.ViewPlanillaLabel_descuentos}"/>
+          <h:outputText value="#{planillaController.selected.descuentos}" title="#{bundle.ViewPlanillaTitle_descuentos}"/>
+          <h:outputText value="#{bundle.ViewPlanillaLabel_igss}"/>
+          <h:outputText value="#{planillaController.selected.igss}" title="#{bundle.ViewPlanillaTitle_igss}"/>
+          <h:outputText value="#{bundle.ViewPlanillaLabel_bonificación}"/>
+          <h:outputText value="#{planillaController.selected.bonificación}" title="#{bundle.ViewPlanillaTitle_bonificación}"/>
+          <h:outputText value="#{bundle.ViewPlanillaLabel_salarioLiquido}"/>
+          <h:outputText value="#{planillaController.selected.salarioLiquido}" title="#{bundle.ViewPlanillaTitle_salarioLiquido}"/>
+          <h:outputText value="#{bundle.ViewPlanillaLabel_idEmpleado}"/>
+          <h:outputText value="#{planillaController.selected.idEmpleado}" title="#{bundle.ViewPlanillaTitle_idEmpleado}"/>
+        </h:panelGrid>
+        <br />
+        <h:commandLink action="#{planillaController.destroyAndView}" value="#{bundle.ViewPlanillaDestroyLink}"/>
+        <br />
+        <br />
+        <h:link outcome="Edit" value="#{bundle.ViewPlanillaEditLink}"/>
+        <br />
+        <h:commandLink action="#{planillaController.prepareCreate}" value="#{bundle.ViewPlanillaCreateLink}" />
+        <br />
+        <h:commandLink action="#{planillaController.prepareList}" value="#{bundle.ViewPlanillaShowAllLink}"/>
+        <br />
+        <br />
+        <h:link outcome="/index" value="#{bundle.ViewPlanillaIndexLink}"/>
+
+      </h:form>
+    </ui:define>
+  </ui:composition>
+
+</html>
