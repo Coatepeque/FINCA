@@ -12,12 +12,36 @@
     </ui:define>
     <ui:define name="body">
       <h:form styleClass="jsfcrud_list_form">
+        <p:toolbar>
+          <p:toolbarGroup align="left">
+            <p:commandButton action="#{actividadController.prepareCreate}" value="#{bundle.ListActividadCreateLink}" icon="ui-icon-newwin"/>
+            <p:button outcome="/index" value="#{bundle.ListActividadIndexLink}" icon="ui-icon-home"/>
+            <p:separator />
+            <p:commandButton value="Imprimir" type="button" icon="ui-icon-print"> 
+              <p:printer target="tabla" />
+            </p:commandButton>
+          </p:toolbarGroup>
+
+          <p:toolbarGroup align="right">
+            <h:commandLink>
+              <p:graphicImage url="/multimedia/imagenes/excel2.png" width="24"/>
+              <p:dataExporter type="xlsx" target="tabla" fileName="cars" />
+            </h:commandLink>
+            <p:separator />
+            <h:commandLink>
+              <p:graphicImage url="/multimedia/imagenes/pdf.svg" width="24"/>
+              <p:dataExporter type="pdf" target="tabla" fileName="cars"/>
+            </h:commandLink>
+          </p:toolbarGroup>
+
+        </p:toolbar>
+
         <h:outputText escape="false" value="#{bundle.ListActividadEmpty}" rendered="#{actividadController.items.rowCount == 0}"/>
         <h:panelGroup rendered="#{actividadController.items.rowCount > 0}">
-          <h:outputText value="#{actividadController.pagination.pageFirstItem + 1}..#{actividadController.pagination.pageLastItem + 1}/#{actividadController.pagination.itemsCount}"/>&nbsp;
-          <h:commandLink action="#{actividadController.previous}" value="#{bundle.Previous} #{actividadController.pagination.pageSize}" rendered="#{actividadController.pagination.hasPreviousPage}"/>&nbsp;
-          <h:commandLink action="#{actividadController.next}" value="#{bundle.Next} #{actividadController.pagination.pageSize}" rendered="#{actividadController.pagination.hasNextPage}"/>&nbsp;
-          <p:dataTable value="#{actividadController.items}" var="item" style="border:solid 1px">
+          <p:dataTable id="tabla" value="#{actividadController.items}" var="item" editable="true"
+                       paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                       paginator="true" rows="10" style="margin-bottom:20px">
+
             <p:column>
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListActividadTitle_idActividad}"/>
@@ -46,20 +70,16 @@
               <f:facet name="header">
                 <h:outputText value="&nbsp;"/>
               </f:facet>
-              <p:commandButton action="#{actividadController.prepareView}" value="#{bundle.ListActividadViewLink}" icon="ui-icon-search"/>
-              <h:outputText value=" "/>
-              <br/><br/>
-              <p:commandButton action="#{actividadController.prepareEdit}" value="#{bundle.ListActividadEditLink}" icon="ui-icon-wrench"/>
-              <h:outputText value=" "/>
-              <br/><br/>
-              <p:commandButton action="#{actividadController.destroy}" value="#{bundle.ListActividadDestroyLink}" icon="ui-icon-strash"/>
+              
+              <p:menuButton value="Opciones">
+                <p:menuitem action="#{actividadController.prepareView}" value="#{bundle.ListActividadViewLink}" icon="ui-icon-search"/>
+                <p:menuitem action="#{actividadController.prepareEdit}" value="#{bundle.ListActividadEditLink}" icon="ui-icon-wrench"/>
+                <p:menuitem action="#{actividadController.destroy}" value="#{bundle.ListActividadDestroyLink}" icon="ui-icon-strash" ajax="false"/>           
+            </p:menuButton>
+              
             </p:column>
-          </p:dataTable>
+          </p:dataTable>        
         </h:panelGroup>
-        <br />
-        <p:commandButton action="#{actividadController.prepareCreate}" value="#{bundle.ListActividadCreateLink}" icon="ui-icon-newwin"/>
-        &nbsp;
-        <p:button outcome="/index" value="#{bundle.ListActividadIndexLink}" icon="ui-icon-home"/>
       </h:form>
     </ui:define>
   </ui:composition>

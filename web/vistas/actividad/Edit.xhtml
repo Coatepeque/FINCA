@@ -12,9 +12,8 @@
     </ui:define>
     <ui:define name="body">
       <h:form id="centrar">
-        <p:panelGrid columns="2">
-          <p:outputLabel value="#{bundle.EditActividadLabel_idActividad}" for="idActividad" />
-          <p:inputText id="idActividad" value="#{actividadController.selected.idActividad}" title="#{bundle.EditActividadTitle_idActividad}" required="true" requiredMessage="#{bundle.EditActividadRequiredMessage_idActividad}"/>
+
+        <p:panelGrid columns="2" style="content:center">          
           <p:outputLabel value="#{bundle.EditActividadLabel_codigo}" for="codigo" />
           <p:inputText id="codigo" value="#{actividadController.selected.codigo}" title="#{bundle.EditActividadTitle_codigo}" required="true" requiredMessage="#{bundle.EditActividadRequiredMessage_codigo}"/>
           <p:outputLabel value="#{bundle.EditActividadLabel_descripcion}" for="descripcion" />
@@ -24,15 +23,14 @@
             <f:selectItems value="#{centroController.itemsAvailableSelectOne}"/>
           </p:selectOneMenu>
         </p:panelGrid>
-        <p:commandButton action="#{actividadController.update}" value="#{bundle.EditActividadSaveLink}" ajax="false" icon="ui-icon-disk"/>
-        <br />
-        <br />
-        <p:button outcome="View" value="#{bundle.EditActividadViewLink}" icon="ui-icon-search" />
-        <br />
-        <p:commandButton action="#{actividadController.prepareList}" value="#{bundle.EditActividadShowAllLink}" immediate="true" icon="ui-icon-clipboard"/>
-        <br />
-        <br />
-        <p:button outcome="/index" value="#{bundle.EditActividadIndexLink}" icon="ui-icon-home"/>
+        <br/>
+        <p:menuButton value="Opciones">
+          <p:menuitem action="#{actividadController.update}" value="#{bundle.EditActividadSaveLink}" ajax="false" icon="ui-icon-disk"/>
+          <p:menuitem outcome="View" value="#{bundle.EditActividadViewLink}" icon="ui-icon-search" />
+          <p:menuitem action="#{actividadController.prepareList}" value="#{bundle.EditActividadShowAllLink}" immediate="true" icon="ui-icon-clipboard"/> 
+          <p:menuitem outcome="/index" value="#{bundle.EditActividadIndexLink}" icon="ui-icon-home"/>
+        </p:menuButton>
+
       </h:form>
     </ui:define>
   </ui:composition>
