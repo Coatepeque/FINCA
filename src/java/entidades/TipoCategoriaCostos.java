@@ -105,7 +105,7 @@ public class TipoCategoriaCostos implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.TipoCategoriaCostos[ idTipoCategoriaCostos=" + idTipoCategoriaCostos + " ]";
+        return descripcion;
     }
     
 }
