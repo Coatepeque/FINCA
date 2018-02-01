@@ -3,33 +3,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
   <ui:composition template="/template.xhtml">
     <ui:define name="title">
       <h:outputText value="#{bundle.CreateCentroTitle}"></h:outputText>
     </ui:define>
     <ui:define name="body">
-      <h:panelGroup id="messagePanel" layout="block">
-        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-      </h:panelGroup>
-      <h:form>
-        <h:panelGrid columns="2">
-          <h:outputLabel value="#{bundle.CreateCentroLabel_idCentro}" for="idCentro" />
-          <h:inputText id="idCentro" value="#{centroController.selected.idCentro}" title="#{bundle.CreateCentroTitle_idCentro}" required="true" requiredMessage="#{bundle.CreateCentroRequiredMessage_idCentro}"/>
-          <h:outputLabel value="#{bundle.CreateCentroLabel_codigo}" for="codigo" />
-          <h:inputText id="codigo" value="#{centroController.selected.codigo}" title="#{bundle.CreateCentroTitle_codigo}" required="true" requiredMessage="#{bundle.CreateCentroRequiredMessage_codigo}"/>
-          <h:outputLabel value="#{bundle.CreateCentroLabel_descripcion}" for="descripcion" />
-          <h:inputText id="descripcion" value="#{centroController.selected.descripcion}" title="#{bundle.CreateCentroTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateCentroRequiredMessage_descripcion}"/>
-        </h:panelGrid>
+      <h:form id="centrar">
+        <p:panelGrid columns="2">
+          
+          <p:outputLabel value="#{bundle.CreateCentroLabel_codigo}" for="codigo" />
+          <p:inputText id="codigo" value="#{centroController.selected.codigo}" title="#{bundle.CreateCentroTitle_codigo}" required="true" requiredMessage="#{bundle.CreateCentroRequiredMessage_codigo}"/>
+          <p:outputLabel value="#{bundle.CreateCentroLabel_descripcion}" for="descripcion" />
+          <p:inputText id="descripcion" value="#{centroController.selected.descripcion}" title="#{bundle.CreateCentroTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateCentroRequiredMessage_descripcion}"/>
+        </p:panelGrid>
         <br />
-        <h:commandLink action="#{centroController.create}" value="#{bundle.CreateCentroSaveLink}" />
+        <p:commandButton action="#{centroController.create}" value="#{bundle.CreateCentroSaveLink}" ajax="false" icon="ui-icon-disk" />
         <br />
         <br />
-        <h:commandLink action="#{centroController.prepareList}" value="#{bundle.CreateCentroShowAllLink}" immediate="true"/>
+        <p:commandButton action="#{centroController.prepareList}" value="#{bundle.CreateCentroShowAllLink}" immediate="true" icon="ui-icon-clipboard"/>
         <br />
         <br />
-        <h:link outcome="/index" value="#{bundle.CreateCentroIndexLink}"/>
+        <p:button outcome="/index" value="#{bundle.CreateCentroIndexLink}" icon="ui-icon-home"/>
       </h:form>
     </ui:define>
   </ui:composition>

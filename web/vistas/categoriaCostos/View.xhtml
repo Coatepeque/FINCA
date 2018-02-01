@@ -21,17 +21,17 @@
           <h:outputText value="#{categoriaCostosController.selected.idTipoCategoriaCostos}" title="#{bundle.ViewCategoriaCostosTitle_idTipoCategoriaCostos}"/>
         </p:panelGrid>
         <br />
-        <p:commandButton action="#{categoriaCostosController.destroyAndView}" value="#{bundle.ViewCategoriaCostosDestroyLink}"/>
+        <p:commandButton action="#{categoriaCostosController.destroyAndView}" value="#{bundle.ViewCategoriaCostosDestroyLink}" ajax="false" icon="ui-icon-strash"/>
         <br />
         <br />
-        <p:button outcome="Edit" value="#{bundle.ViewCategoriaCostosEditLink}"/>
+        <p:button outcome="Edit" value="#{bundle.ViewCategoriaCostosEditLink}" icon="ui-icon-wrench"/>
         <br />
-        <p:commandButton action="#{categoriaCostosController.prepareCreate}" value="#{bundle.ViewCategoriaCostosCreateLink}" />
+        <p:commandButton action="#{categoriaCostosController.prepareCreate}" value="#{bundle.ViewCategoriaCostosCreateLink}" icon="ui-icon-newwin" />
         <br />
-        <p:commandButton action="#{categoriaCostosController.prepareList}" value="#{bundle.ViewCategoriaCostosShowAllLink}"/>
+        <p:commandButton action="#{categoriaCostosController.prepareList}" value="#{bundle.ViewCategoriaCostosShowAllLink}" icon="ui-icon-cipboard"/>
         <br />
         <br />
-        <p:button outcome="/index" value="#{bundle.ViewCategoriaCostosIndexLink}"/>
+        <p:button outcome="/index" value="#{bundle.ViewCategoriaCostosIndexLink}" icon="ui-icon-home"/>
 
       </h:form>
     </ui:define>

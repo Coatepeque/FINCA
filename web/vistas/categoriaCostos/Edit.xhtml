@@ -13,8 +13,6 @@
     <ui:define name="body">
       <h:form id="centrar">
         <p:panelGrid columns="2">
-          <p:outputLabel value="#{bundle.EditCategoriaCostosLabel_descripcion}" for="descripcion" />
-          <p:inputText id="descripcion" value="#{categoriaCostosController.selected.descripcion}" title="#{bundle.EditCategoriaCostosTitle_descripcion}" required="true" requiredMessage="#{bundle.EditCategoriaCostosRequiredMessage_descripcion}"/>
           <p:outputLabel value="#{bundle.EditCategoriaCostosLabel_idTipoCategoriaCostos}" for="idTipoCategoriaCostos" />
           <p:selectOneMenu id="idTipoCategoriaCostos" value="#{categoriaCostosController.selected.idTipoCategoriaCostos}" title="#{bundle.EditCategoriaCostosTitle_idTipoCategoriaCostos}" required="true" requiredMessage="#{bundle.EditCategoriaCostosRequiredMessage_idTipoCategoriaCostos}">
             <f:selectItems value="#{tipoCategoriaCostosController.itemsAvailableSelectOne}"/>
