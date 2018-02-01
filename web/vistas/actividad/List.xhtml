@@ -11,7 +11,9 @@
       <h:outputText value="#{bundle.ListActividadTitle}"></h:outputText>
     </ui:define>
     <ui:define name="body">
-      <h:form styleClass="jsfcrud_list_form">
+      <h:form id="form" styleClass="jsfcrud_list_form">
+        <p:growl id="msgs" showDetail="true"/>                
+
         <p:toolbar>
           <p:toolbarGroup align="left">
             <p:commandButton action="#{actividadController.prepareCreate}" value="#{bundle.ListActividadCreateLink}" icon="ui-icon-newwin"/>
@@ -37,14 +39,16 @@
             <p:commandButton id="toggler" type="button" value="Columns" style="float:right" icon="ui-icon-calculator" />
             <p:columnToggler datasource="tabla" trigger="toggler" />
           </p:toolbarGroup>
-
         </p:toolbar>
 
         <h:outputText escape="false" value="#{bundle.ListActividadEmpty}" rendered="#{actividadController.items.rowCount == 0}"/>
         <h:panelGroup rendered="#{actividadController.items.rowCount > 0}">
+
           <p:dataTable id="tabla" value="#{actividadController.items}" var="item" editable="true"
                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
                        paginator="true" rows="10" style="margin-bottom:20px">
+
+            <p:ajax event="rowEdit" listener="#{actividadController.update}" update=":form:msgs" />
 
             <p:column>
               <f:facet name="header">
@@ -52,36 +56,68 @@
               </f:facet>
               <h:outputText value="#{item.idActividad}"/>
             </p:column>
+
             <p:column>
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListActividadTitle_codigo}"/>
               </f:facet>
-              <h:outputText value="#{item.codigo}"/>
+              <p:cellEditor>
+                <f:facet name="output">
+                  <h:outputText value="#{item.codigo}" />
+                </f:facet>
+                <f:facet name="input">
+                  <p:inputText value="#{item.codigo}" style="width:100%"/>
+                </f:facet>
+              </p:cellEditor>
             </p:column>
+
             <p:column>
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListActividadTitle_descripcion}"/>
               </f:facet>
-              <h:outputText value="#{item.descripcion}"/>
+              <p:cellEditor>
+                <f:facet name="output">
+                  <h:outputText value="#{item.descripcion}" />
+                </f:facet>
+                <f:facet name="input">
+                  <p:inputText value="#{item.descripcion}" style="width:100%"/>
+                </f:facet>
+              </p:cellEditor>
             </p:column>
+
             <p:column>
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListActividadTitle_idCentro}"/>
               </f:facet>
-              <h:outputText value="#{item.idCentro.codigo}"/>
+              <p:cellEditor>
+                <f:facet name="output">
+                  <h:outputText value="#{item.idCentro.codigo}" />
+                </f:facet>
+                <f:facet name="input">
+                  <p:selectOneMenu id="idCentro" value="#{item.idCentro.codigo}" required="true">
+                    <f:selectItems value="#{centroController.itemsAvailableSelectOne}"/>
+                  </p:selectOneMenu>
+                </f:facet>
+              </p:cellEditor>
             </p:column>
+
+ 
+
             <p:column exportable="false">
               <f:facet name="header">
                 <h:outputText value="&nbsp;"/>
               </f:facet>
-
               <p:menuButton value="Opciones">
-                <p:menuitem action="#{actividadController.prepareView}" value="#{bundle.ListActividadViewLink}" icon="ui-icon-search"/>
-                <p:menuitem action="#{actividadController.prepareEdit}" value="#{bundle.ListActividadEditLink}" icon="ui-icon-wrench"/>
+                <p:menuitem action="#{actividadController.prepareView}" value="#{bundle.ListActividadViewLink}" icon="ui-icon-search" />
+                <p:menuitem action="#{actividadController.prepareEdit}" value="#{bundle.ListActividadEditLink}" icon="ui-icon-wrench" />
                 <p:menuitem action="#{actividadController.destroy}" value="#{bundle.ListActividadDestroyLink}" icon="ui-icon-strash" ajax="false"/>           
               </p:menuButton>
-
             </p:column>
+
+            <p:column style="width:32px">
+              <p:rowEditor />
+            </p:column>
+
           </p:dataTable>        
         </h:panelGroup>
       </h:form>
