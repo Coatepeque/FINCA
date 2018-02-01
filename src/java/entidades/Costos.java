@@ -131,7 +131,7 @@ public class Costos implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Costos[ idCostos=" + idCostos + " ]";
+        return String.valueOf(precio);
     }
     
 }

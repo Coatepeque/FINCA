@@ -32,11 +32,11 @@
             <f:convertDateTime pattern="HH:mm:ss" />
           </h:outputText>
           <h:outputText value="#{bundle.ViewReporteDiarioLabel_idCostos}"/>
-          <h:outputText value="#{reporteDiarioController.selected.idCostos}" title="#{bundle.ViewReporteDiarioTitle_idCostos}"/>
+          <h:outputText value="#{reporteDiarioController.selected.idCostos.precio}" title="#{bundle.ViewReporteDiarioTitle_idCostos}"/>
           <h:outputText value="#{bundle.ViewReporteDiarioLabel_idEmpleado}"/>
-          <h:outputText value="#{reporteDiarioController.selected.idEmpleado}" title="#{bundle.ViewReporteDiarioTitle_idEmpleado}"/>
+          <h:outputText value="#{reporteDiarioController.selected.idEmpleado.nombres}" title="#{bundle.ViewReporteDiarioTitle_idEmpleado}"/>
           <h:outputText value="#{bundle.ViewReporteDiarioLabel_idSubActividad}"/>
-          <h:outputText value="#{reporteDiarioController.selected.idSubActividad}" title="#{bundle.ViewReporteDiarioTitle_idSubActividad}"/>
+          <h:outputText value="#{reporteDiarioController.selected.idSubActividad.codigo}" title="#{bundle.ViewReporteDiarioTitle_idSubActividad}"/>
         </h:panelGrid>
         <br />
         <h:commandLink action="#{reporteDiarioController.destroyAndView}" value="#{bundle.ViewReporteDiarioDestroyLink}"/>

@@ -131,7 +131,7 @@ public class SubActividad implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.SubActividad[ idSubActividad=" + idSubActividad + " ]";
+        return codigo;
     }
     
 }
