@@ -11,9 +11,7 @@
       <h:outputText value="#{bundle.ViewCentroTitle}"></h:outputText>
     </ui:define>
     <ui:define name="body">
-      <h:panelGroup id="messagePanel" layout="block">
-        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-      </h:panelGroup>
+      
       <h:form id="centrar">
         <p:panelGrid columns="2">
           <h:outputText value="#{bundle.ViewCentroLabel_idCentro}"/>
@@ -24,17 +22,12 @@
           <h:outputText value="#{centroController.selected.descripcion}" title="#{bundle.ViewCentroTitle_descripcion}"/>
         </p:panelGrid>
         <br />
-        <p:commandButton action="#{centroController.destroyAndView}" value="#{bundle.ViewCentroDestroyLink}" icon="ui-icon-strash"/>
-        <br />
-        <br />
-        <p:button outcome="Edit" value="#{bundle.ViewCentroEditLink}" icon="ui-icon-wrench"/>
-        <br />
-        <p:commandButton action="#{centroController.prepareCreate}" value="#{bundle.ViewCentroCreateLink}" icon="ui-icon-newwin" />
-        <br />
-        <p:commandButton action="#{centroController.prepareList}" value="#{bundle.ViewCentroShowAllLink}" icon="ui-icon-clipboard"/>
-        <br />
-        <br />
-        <p:button outcome="/index" value="#{bundle.ViewCentroIndexLink}" icon="ui-icon-home"/>
+        <p:menuButton value="Opciones">
+            <p:menuitem action="#{centroController.destroyAndView}" value="#{bundle.ViewCentroDestroyLink}" icon="ui-icon-strash"/>
+            <p:menuitem outcome="Edit" value="#{bundle.ViewCentroEditLink}" icon="ui-icon-wrench"/>
+            <p:menuitem action="#{centroController.prepareCreate}" value="#{bundle.ViewCentroCreateLink}" icon="ui-icon-newwin" />
+            <p:menuitem action="#{centroController.prepareList}" value="#{bundle.ViewCentroShowAllLink}" icon="ui-icon-clipboard"/>
+        </p:menuButton>
 
       </h:form>
     </ui:define>

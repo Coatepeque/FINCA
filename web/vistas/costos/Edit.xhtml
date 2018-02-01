@@ -3,38 +3,33 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
   <ui:composition template="/template.xhtml">
     <ui:define name="title">
       <h:outputText value="#{bundle.EditCostosTitle}"></h:outputText>
     </ui:define>
     <ui:define name="body">
-      <h:panelGroup id="messagePanel" layout="block">
-        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-      </h:panelGroup>
-      <h:form>
-        <h:panelGrid columns="2">
-          <h:outputLabel value="#{bundle.EditCostosLabel_idCostos}" for="idCostos" />
-          <h:inputText id="idCostos" value="#{costosController.selected.idCostos}" title="#{bundle.EditCostosTitle_idCostos}" required="true" requiredMessage="#{bundle.EditCostosRequiredMessage_idCostos}"/>
-          <h:outputLabel value="#{bundle.EditCostosLabel_precio}" for="precio" />
-          <h:inputText id="precio" value="#{costosController.selected.precio}" title="#{bundle.EditCostosTitle_precio}" required="true" requiredMessage="#{bundle.EditCostosRequiredMessage_precio}"/>
-          <h:outputLabel value="#{bundle.EditCostosLabel_cantidad}" for="cantidad" />
-          <h:inputText id="cantidad" value="#{costosController.selected.cantidad}" title="#{bundle.EditCostosTitle_cantidad}" />
-          <h:outputLabel value="#{bundle.EditCostosLabel_idCategoriaCostos}" for="idCategoriaCostos" />
-          <h:selectOneMenu id="idCategoriaCostos" value="#{costosController.selected.idCategoriaCostos}" title="#{bundle.EditCostosTitle_idCategoriaCostos}" required="true" requiredMessage="#{bundle.EditCostosRequiredMessage_idCategoriaCostos}">
+      
+      <h:form id="centrar">
+        <p:panelGrid columns="2">
+          <p:outputLabel value="#{bundle.EditCostosLabel_idCostos}" for="idCostos" />
+          <p:inputText id="idCostos" value="#{costosController.selected.idCostos}" title="#{bundle.EditCostosTitle_idCostos}" required="true" requiredMessage="#{bundle.EditCostosRequiredMessage_idCostos}"/>
+          <p:outputLabel value="#{bundle.EditCostosLabel_precio}" for="precio" />
+          <p:inputText id="precio" value="#{costosController.selected.precio}" title="#{bundle.EditCostosTitle_precio}" required="true" requiredMessage="#{bundle.EditCostosRequiredMessage_precio}"/>
+          <p:outputLabel value="#{bundle.EditCostosLabel_cantidad}" for="cantidad" />
+          <p:inputText id="cantidad" value="#{costosController.selected.cantidad}" title="#{bundle.EditCostosTitle_cantidad}" />
+          <p:outputLabel value="#{bundle.EditCostosLabel_idCategoriaCostos}" for="idCategoriaCostos" />
+          <p:selectOneMenu id="idCategoriaCostos" value="#{costosController.selected.idCategoriaCostos}" title="#{bundle.EditCostosTitle_idCategoriaCostos}" required="true" requiredMessage="#{bundle.EditCostosRequiredMessage_idCategoriaCostos}">
             <f:selectItems value="#{categoriaCostosController.itemsAvailableSelectOne}"/>
-          </h:selectOneMenu>
-        </h:panelGrid>
-        <h:commandLink action="#{costosController.update}" value="#{bundle.EditCostosSaveLink}"/>
-        <br />
-        <br />
-        <h:link outcome="View" value="#{bundle.EditCostosViewLink}"/>
-        <br />
-        <h:commandLink action="#{costosController.prepareList}" value="#{bundle.EditCostosShowAllLink}" immediate="true"/>
-        <br />
-        <br />
-        <h:link outcome="/index" value="#{bundle.EditCostosIndexLink}" />
+          </p:selectOneMenu>
+        </p:panelGrid>
+          <p:menuButton value="Opciones">
+              <p:menuitem action="#{costosController.update}" value="#{bundle.EditCostosSaveLink}" ajax="false" icon="ui-icon-disk"/>
+              <p:menuitem outcome="View" value="#{bundle.EditCostosViewLink}" icon="ui-icon-search"/>
+              <p:menuitem action="#{costosController.prepareList}" value="#{bundle.EditCostosShowAllLink}" immediate="true" icon="ui-icon-clipboard"/>
+          </p:menuButton>
       </h:form>
     </ui:define>
   </ui:composition>

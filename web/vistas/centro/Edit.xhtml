@@ -18,15 +18,11 @@
           <p:outputLabel value="#{bundle.EditCentroLabel_descripcion}" for="descripcion" />
           <p:inputText id="descripcion" value="#{centroController.selected.descripcion}" title="#{bundle.EditCentroTitle_descripcion}" required="true" requiredMessage="#{bundle.EditCentroRequiredMessage_descripcion}"/>
         </p:panelGrid>
-        <p:commandButton action="#{centroController.update}" value="#{bundle.EditCentroSaveLink}" ajax="false" icon="ui-icon-disk"/>
-        <br />
-        <br />
-        <p:button outcome="View" value="#{bundle.EditCentroViewLink}" icon="ui-icon-search"/>
-        <br />
-        <p:commandButton action="#{centroController.prepareList}" value="#{bundle.EditCentroShowAllLink}" immediate="true" icon="ui-icon-clipboard"/>
-        <br />
-        <br />
-        <p:button outcome="/index" value="#{bundle.EditCentroIndexLink}" icon="ui-icon-home" />
+          <p:menuButton value="Opciones">
+              <p:menuitem action="#{centroController.update}" value="#{bundle.EditCentroSaveLink}" ajax="false" icon="ui-icon-disk"/>
+              <p:menuitem outcome="View" value="#{bundle.EditCentroViewLink}" icon="ui-icon-search"/>
+              <p:menuitem action="#{centroController.prepareList}" value="#{bundle.EditCentroShowAllLink}" immediate="true" icon="ui-icon-clipboard"/>
+          </p:menuButton>
       </h:form>
     </ui:define>
   </ui:composition>

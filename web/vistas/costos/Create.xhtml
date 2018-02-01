@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
   <ui:composition template="/template.xhtml">
     <ui:define name="title">
@@ -13,27 +14,21 @@
       <h:panelGroup id="messagePanel" layout="block">
         <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
       </h:panelGroup>
-      <h:form>
-        <h:panelGrid columns="2">
-          <h:outputLabel value="#{bundle.CreateCostosLabel_idCostos}" for="idCostos" />
-          <h:inputText id="idCostos" value="#{costosController.selected.idCostos}" title="#{bundle.CreateCostosTitle_idCostos}" required="true" requiredMessage="#{bundle.CreateCostosRequiredMessage_idCostos}"/>
-          <h:outputLabel value="#{bundle.CreateCostosLabel_precio}" for="precio" />
-          <h:inputText id="precio" value="#{costosController.selected.precio}" title="#{bundle.CreateCostosTitle_precio}" required="true" requiredMessage="#{bundle.CreateCostosRequiredMessage_precio}"/>
-          <h:outputLabel value="#{bundle.CreateCostosLabel_cantidad}" for="cantidad" />
-          <h:inputText id="cantidad" value="#{costosController.selected.cantidad}" title="#{bundle.CreateCostosTitle_cantidad}" />
-          <h:outputLabel value="#{bundle.CreateCostosLabel_idCategoriaCostos}" for="idCategoriaCostos" />
-          <h:selectOneMenu id="idCategoriaCostos" value="#{costosController.selected.idCategoriaCostos}" title="#{bundle.CreateCostosTitle_idCategoriaCostos}" required="true" requiredMessage="#{bundle.CreateCostosRequiredMessage_idCategoriaCostos}">
+      <h:form id="centrar">
+        <p:panelGrid columns="2">
+          <p:outputLabel value="#{bundle.CreateCostosLabel_precio}" for="precio" />
+          <p:inputText id="precio" value="#{costosController.selected.precio}" title="#{bundle.CreateCostosTitle_precio}" required="true" requiredMessage="#{bundle.CreateCostosRequiredMessage_precio}"/>
+          <p:outputLabel value="#{bundle.CreateCostosLabel_cantidad}" for="cantidad" />
+          <p:inputText id="cantidad" value="#{costosController.selected.cantidad}" title="#{bundle.CreateCostosTitle_cantidad}" />
+          <p:outputLabel value="#{bundle.CreateCostosLabel_idCategoriaCostos}" for="idCategoriaCostos" />
+          <p:selectOneMenu id="idCategoriaCostos" value="#{costosController.selected.idCategoriaCostos}" title="#{bundle.CreateCostosTitle_idCategoriaCostos}" required="true" requiredMessage="#{bundle.CreateCostosRequiredMessage_idCategoriaCostos}">
             <f:selectItems value="#{categoriaCostosController.itemsAvailableSelectOne}"/>
-          </h:selectOneMenu>
-        </h:panelGrid>
+          </p:selectOneMenu>
+        </p:panelGrid>
         <br />
-        <h:commandLink action="#{costosController.create}" value="#{bundle.CreateCostosSaveLink}" />
-        <br />
-        <br />
-        <h:commandLink action="#{costosController.prepareList}" value="#{bundle.CreateCostosShowAllLink}" immediate="true"/>
-        <br />
-        <br />
-        <h:link outcome="/index" value="#{bundle.CreateCostosIndexLink}"/>
+        <p:commandButton action="#{costosController.create}" value="#{bundle.CreateCostosSaveLink}" ajax="false" icon="ui-icon-disk"/>
+        <p:commandButton action="#{costosController.prepareList}" value="#{bundle.CreateCostosShowAllLink}" immediate="true" icon="ui-icon-clipboard"/>
+        <p:button outcome="/index" value="#{bundle.CreateCostosIndexLink}" icon="ui-icon-home"/>
       </h:form>
     </ui:define>
   </ui:composition>
