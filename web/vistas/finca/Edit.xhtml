@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
   <ui:composition template="/template.xhtml">
     <ui:define name="title">
@@ -13,22 +14,17 @@
       <h:panelGroup id="messagePanel" layout="block">
         <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
       </h:panelGroup>
-      <h:form>
-        <h:panelGrid columns="2">
-          <h:outputLabel value="#{bundle.EditFincaLabel_idFinca}" for="idFinca" />
-          <h:inputText id="idFinca" value="#{fincaController.selected.idFinca}" title="#{bundle.EditFincaTitle_idFinca}" required="true" requiredMessage="#{bundle.EditFincaRequiredMessage_idFinca}"/>
-          <h:outputLabel value="#{bundle.EditFincaLabel_descripcion}" for="descripcion" />
-          <h:inputText id="descripcion" value="#{fincaController.selected.descripcion}" title="#{bundle.EditFincaTitle_descripcion}" required="true" requiredMessage="#{bundle.EditFincaRequiredMessage_descripcion}"/>
-        </h:panelGrid>
-        <h:commandLink action="#{fincaController.update}" value="#{bundle.EditFincaSaveLink}"/>
-        <br />
-        <br />
-        <h:link outcome="View" value="#{bundle.EditFincaViewLink}"/>
-        <br />
-        <h:commandLink action="#{fincaController.prepareList}" value="#{bundle.EditFincaShowAllLink}" immediate="true"/>
-        <br />
-        <br />
-        <h:link outcome="/index" value="#{bundle.EditFincaIndexLink}" />
+      <h:form id="centrar">
+        <p:panelGrid columns="2">
+          <p:outputLabel value="#{bundle.EditFincaLabel_descripcion}" for="descripcion" />
+          <p:inputText id="descripcion" value="#{fincaController.selected.descripcion}" title="#{bundle.EditFincaTitle_descripcion}" required="true" requiredMessage="#{bundle.EditFincaRequiredMessage_descripcion}"/>
+        </p:panelGrid>
+          
+        <p:menuButton value="Opciones">
+        <p:menuitem action="#{fincaController.update}" value="#{bundle.EditFincaSaveLink}"/>
+        <p:menuitem outcome="View" value="#{bundle.EditFincaViewLink}"/>
+        <p:menuitem action="#{fincaController.prepareList}" value="#{bundle.EditFincaShowAllLink}" immediate="true"/>
+         </p:menuButton>
       </h:form>
     </ui:define>
   </ui:composition>

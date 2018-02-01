@@ -3,36 +3,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
   <ui:composition template="/template.xhtml">
     <ui:define name="title">
       <h:outputText value="#{bundle.ViewFincaTitle}"></h:outputText>
     </ui:define>
     <ui:define name="body">
-      <h:panelGroup id="messagePanel" layout="block">
-        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-      </h:panelGroup>
-      <h:form>
-        <h:panelGrid columns="2">
+      
+      <h:form id="centrar">
+        <p:panelGrid columns="2">
           <h:outputText value="#{bundle.ViewFincaLabel_idFinca}"/>
           <h:outputText value="#{fincaController.selected.idFinca}" title="#{bundle.ViewFincaTitle_idFinca}"/>
           <h:outputText value="#{bundle.ViewFincaLabel_descripcion}"/>
           <h:outputText value="#{fincaController.selected.descripcion}" title="#{bundle.ViewFincaTitle_descripcion}"/>
-        </h:panelGrid>
+        </p:panelGrid>
         <br />
-        <h:commandLink action="#{fincaController.destroyAndView}" value="#{bundle.ViewFincaDestroyLink}"/>
-        <br />
-        <br />
-        <h:link outcome="Edit" value="#{bundle.ViewFincaEditLink}"/>
-        <br />
-        <h:commandLink action="#{fincaController.prepareCreate}" value="#{bundle.ViewFincaCreateLink}" />
-        <br />
-        <h:commandLink action="#{fincaController.prepareList}" value="#{bundle.ViewFincaShowAllLink}"/>
-        <br />
-        <br />
-        <h:link outcome="/index" value="#{bundle.ViewFincaIndexLink}"/>
-
+        <p:menuButton value="Opciones"> 
+        <p:menuitem action="#{fincaController.destroyAndView}" value="#{bundle.ViewFincaDestroyLink}" icon="iu-icon-strash"/>
+        <p:menuitem outcome="Edit" value="#{bundle.ViewFincaEditLink}" icon="iu-icon-wrench"/>
+        <p:menuitem action="#{fincaController.prepareCreate}" value="#{bundle.ViewFincaCreateLink}" icon="iu-icon-newwin"/>
+        <p:menuitem action="#{fincaController.prepareList}" value="#{bundle.ViewFincaShowAllLink}" icon="iu-icon-clipboard"/>
+        </p:menuButton>
+        
       </h:form>
     </ui:define>
   </ui:composition>
