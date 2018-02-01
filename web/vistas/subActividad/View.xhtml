@@ -22,7 +22,7 @@
           <h:outputText value="#{bundle.ViewSubActividadLabel_descripcion}"/>
           <h:outputText value="#{subActividadController.selected.descripcion}" title="#{bundle.ViewSubActividadTitle_descripcion}"/>
           <h:outputText value="#{bundle.ViewSubActividadLabel_idActividad}"/>
-          <h:outputText value="#{subActividadController.selected.idActividad}" title="#{bundle.ViewSubActividadTitle_idActividad}"/>
+          <h:outputText value="#{subActividadController.selected.idActividad.codigo}" title="#{bundle.ViewSubActividadTitle_idActividad}"/>
         </h:panelGrid>
         <br />
         <h:commandLink action="#{subActividadController.destroyAndView}" value="#{bundle.ViewSubActividadDestroyLink}"/>

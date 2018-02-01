@@ -131,7 +131,7 @@ public class Actividad implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Actividad[ idActividad=" + idActividad + " ]";
+        return codigo;
     }
     
 }
