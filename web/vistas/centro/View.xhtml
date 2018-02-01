@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
   <ui:composition template="/template.xhtml">
     <ui:define name="title">
@@ -13,27 +14,27 @@
       <h:panelGroup id="messagePanel" layout="block">
         <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
       </h:panelGroup>
-      <h:form>
-        <h:panelGrid columns="2">
+      <h:form id="centrar">
+        <p:panelGrid columns="2">
           <h:outputText value="#{bundle.ViewCentroLabel_idCentro}"/>
           <h:outputText value="#{centroController.selected.idCentro}" title="#{bundle.ViewCentroTitle_idCentro}"/>
           <h:outputText value="#{bundle.ViewCentroLabel_codigo}"/>
           <h:outputText value="#{centroController.selected.codigo}" title="#{bundle.ViewCentroTitle_codigo}"/>
           <h:outputText value="#{bundle.ViewCentroLabel_descripcion}"/>
           <h:outputText value="#{centroController.selected.descripcion}" title="#{bundle.ViewCentroTitle_descripcion}"/>
-        </h:panelGrid>
+        </p:panelGrid>
         <br />
-        <h:commandLink action="#{centroController.destroyAndView}" value="#{bundle.ViewCentroDestroyLink}"/>
-        <br />
-        <br />
-        <h:link outcome="Edit" value="#{bundle.ViewCentroEditLink}"/>
-        <br />
-        <h:commandLink action="#{centroController.prepareCreate}" value="#{bundle.ViewCentroCreateLink}" />
-        <br />
-        <h:commandLink action="#{centroController.prepareList}" value="#{bundle.ViewCentroShowAllLink}"/>
+        <p:commandButton action="#{centroController.destroyAndView}" value="#{bundle.ViewCentroDestroyLink}" icon="ui-icon-strash"/>
         <br />
         <br />
-        <h:link outcome="/index" value="#{bundle.ViewCentroIndexLink}"/>
+        <p:button outcome="Edit" value="#{bundle.ViewCentroEditLink}" icon="ui-icon-wrench"/>
+        <br />
+        <p:commandButton action="#{centroController.prepareCreate}" value="#{bundle.ViewCentroCreateLink}" icon="ui-icon-newwin" />
+        <br />
+        <p:commandButton action="#{centroController.prepareList}" value="#{bundle.ViewCentroShowAllLink}" icon="ui-icon-clipboard"/>
+        <br />
+        <br />
+        <p:button outcome="/index" value="#{bundle.ViewCentroIndexLink}" icon="ui-icon-home"/>
 
       </h:form>
     </ui:define>
