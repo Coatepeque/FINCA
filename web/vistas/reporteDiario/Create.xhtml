@@ -11,40 +11,33 @@
       <h:outputText value="#{bundle.CreateReporteDiarioTitle}"></h:outputText>
     </ui:define>
     <ui:define name="body">
-      <h:panelGroup id="messagePanel" layout="block">
-        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-      </h:panelGroup>
-      <h:form>
+      <h:form id="centrar">
         <p:panelGrid columns="2">
-          <h:outputLabel value="#{bundle.CreateReporteDiarioLabel_descripcion}" for="descripcion" />
-          <h:inputText id="descripcion" value="#{reporteDiarioController.selected.descripcion}" title="#{bundle.CreateReporteDiarioTitle_descripcion}" />
-          <h:outputLabel value="#{bundle.CreateReporteDiarioLabel_fecha}" for="fecha" />
+          <p:outputLabel value="#{bundle.CreateReporteDiarioLabel_descripcion}" for="descripcion" />
+          <p:inputText id="descripcion" value="#{reporteDiarioController.selected.descripcion}" title="#{bundle.CreateReporteDiarioTitle_descripcion}" />
+          <p:outputLabel value="#{bundle.CreateReporteDiarioLabel_fecha}" for="fecha" />
           <p:calendar id="fecha" value="#{reporteDiarioController.selected.fecha}" pattern="dd/MM/yyyy HH:mm:ss" mask="true"/> 
-          <h:outputLabel value="#{bundle.CreateReporteDiarioLabel_horainicio}" for="horainicio" />
+          <p:outputLabel value="#{bundle.CreateReporteDiarioLabel_horainicio}" for="horainicio" />
           <p:calendar id="horainicio" value="#{reporteDiarioController.selected.horainicio}" pattern="HH:mm:ss" timeOnly="true"/>
-          <h:outputLabel value="#{bundle.CreateReporteDiarioLabel_horafinal}" for="horafinal" />
+          <p:outputLabel value="#{bundle.CreateReporteDiarioLabel_horafinal}" for="horafinal" />
           <p:calendar id="horafinal" value="#{reporteDiarioController.selected.horafinal}" pattern="HH:mm:ss" timeOnly="true"/>
-          <h:outputLabel value="#{bundle.CreateReporteDiarioLabel_idCostos}" for="idCostos" />
-          <h:selectOneMenu id="idCostos" value="#{reporteDiarioController.selected.idCostos}" title="#{bundle.CreateReporteDiarioTitle_idCostos}" required="true" requiredMessage="#{bundle.CreateReporteDiarioRequiredMessage_idCostos}">
+          <p:outputLabel value="#{bundle.CreateReporteDiarioLabel_idCostos}" for="idCostos" />
+          <p:selectOneMenu id="idCostos" value="#{reporteDiarioController.selected.idCostos}" title="#{bundle.CreateReporteDiarioTitle_idCostos}" required="true" requiredMessage="#{bundle.CreateReporteDiarioRequiredMessage_idCostos}">
             <f:selectItems value="#{costosController.itemsAvailableSelectOne}"/>
-          </h:selectOneMenu>
-          <h:outputLabel value="#{bundle.CreateReporteDiarioLabel_idEmpleado}" for="idEmpleado" />
-          <h:selectOneMenu id="idEmpleado" value="#{reporteDiarioController.selected.idEmpleado}" title="#{bundle.CreateReporteDiarioTitle_idEmpleado}" required="true" requiredMessage="#{bundle.CreateReporteDiarioRequiredMessage_idEmpleado}">
+          </p:selectOneMenu>
+          <p:outputLabel value="#{bundle.CreateReporteDiarioLabel_idEmpleado}" for="idEmpleado" />
+          <p:selectOneMenu id="idEmpleado" value="#{reporteDiarioController.selected.idEmpleado}" title="#{bundle.CreateReporteDiarioTitle_idEmpleado}" required="true" requiredMessage="#{bundle.CreateReporteDiarioRequiredMessage_idEmpleado}">
             <f:selectItems value="#{empleadoController.itemsAvailableSelectOne}"/>
-          </h:selectOneMenu>
-          <h:outputLabel value="#{bundle.CreateReporteDiarioLabel_idSubActividad}" for="idSubActividad" />
-          <h:selectOneMenu id="idSubActividad" value="#{reporteDiarioController.selected.idSubActividad}" title="#{bundle.CreateReporteDiarioTitle_idSubActividad}" required="true" requiredMessage="#{bundle.CreateReporteDiarioRequiredMessage_idSubActividad}">
+          </p:selectOneMenu>
+          <p:outputLabel value="#{bundle.CreateReporteDiarioLabel_idSubActividad}" for="idSubActividad" />
+          <p:selectOneMenu id="idSubActividad" value="#{reporteDiarioController.selected.idSubActividad}" title="#{bundle.CreateReporteDiarioTitle_idSubActividad}" required="true" requiredMessage="#{bundle.CreateReporteDiarioRequiredMessage_idSubActividad}">
             <f:selectItems value="#{subActividadController.itemsAvailableSelectOne}"/>
-          </h:selectOneMenu>
+          </p:selectOneMenu>
         </p:panelGrid>
         <br />
-        <h:commandLink action="#{reporteDiarioController.create}" value="#{bundle.CreateReporteDiarioSaveLink}" />
-        <br />
-        <br />
-        <h:commandLink action="#{reporteDiarioController.prepareList}" value="#{bundle.CreateReporteDiarioShowAllLink}" immediate="true"/>
-        <br />
-        <br />
-        <h:link outcome="/index" value="#{bundle.CreateReporteDiarioIndexLink}"/>
+        <p:commandButton action="#{reporteDiarioController.create}" value="#{bundle.CreateReporteDiarioSaveLink}" icon="ui-icon-disk"/>
+        <p:commandButton action="#{reporteDiarioController.prepareList}" value="#{bundle.CreateReporteDiarioShowAllLink}" immediate="true" icon="ui-icon-clipboard"/>
+        <p:button outcome="/index" value="#{bundle.CreateReporteDiarioIndexLink}" icon="ui-icon-home"/>
       </h:form>
     </ui:define>
   </ui:composition>
