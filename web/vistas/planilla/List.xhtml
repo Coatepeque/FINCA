@@ -20,11 +20,17 @@
           <h:outputText value="#{planillaController.pagination.pageFirstItem + 1}..#{planillaController.pagination.pageLastItem + 1}/#{planillaController.pagination.itemsCount}"/>&nbsp;
           <h:commandLink action="#{planillaController.previous}" value="#{bundle.Previous} #{planillaController.pagination.pageSize}" rendered="#{planillaController.pagination.hasPreviousPage}"/>&nbsp;
           <h:commandLink action="#{planillaController.next}" value="#{bundle.Next} #{planillaController.pagination.pageSize}" rendered="#{planillaController.pagination.hasNextPage}"/>&nbsp;
-          <p:dataTable value="#{planillaController.items}" var="item" style="border:solid 1px" id="planilla">
+          <p:dataTable value="#{planillaController.items}" var="item" style="border:solid 1px" widgetVar="tabla" id="planilla"
+                       emptyMessage="No cars found with given criteria" filteredValue="#{planillaController.selected}">
             <f:facet name="header">
-                        <p:commandButton id="toggler" type="button" value="Quitar Columnas" icon="ui-icon-calculator" />
-                        <p:columnToggler datasource="planilla" trigger="toggler" />
-                    </f:facet> 
+              <p:outputPanel>
+                <h:outputText value="Search all fields:" />
+                <p:inputText id="globalFilter" onkeyup="PF('tabla').filter()" style="width:150px" placeholder="Enter keyword"/>
+              </p:outputPanel>
+              
+              <p:commandButton id="toggler" type="button" value="Quitar Columnas" icon="ui-icon-calculator" />
+              <p:columnToggler datasource="planilla" trigger="toggler" />
+            </f:facet> 
             <p:column >
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListPlanillaTitle_idPlanilla}"/>
@@ -79,6 +85,9 @@
             </p:column>
           </p:dataTable>
         </h:panelGroup>
+            <p:commandButton value="Ver empleados" icon="ui-icon-extlink" actionListener="#{empleadoController.items}">
+        <p:ajax event="dialogReturn" listener="#{empleadoController.items}"  />
+    </p:commandButton>
         <br />
         <h:commandLink action="#{planillaController.prepareCreate}" value="#{bundle.ListPlanillaCreateLink}"/>
         <br />
