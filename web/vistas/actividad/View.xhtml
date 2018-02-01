@@ -20,7 +20,7 @@
           <h:outputText value="#{bundle.ViewActividadLabel_descripcion}"/>
           <h:outputText value="#{actividadController.selected.descripcion}" title="#{bundle.ViewActividadTitle_descripcion}"/>
           <h:outputText value="#{bundle.ViewActividadLabel_idCentro}"/>
-          <h:outputText value="#{actividadController.selected.idCentro}" title="#{bundle.ViewActividadTitle_idCentro}"/>
+          <h:outputText value="#{actividadController.selected.idCentro.codigo}" title="#{bundle.ViewActividadTitle_idCentro}"/>
         </p:panelGrid>
         <br />
         <p:commandButton action="#{actividadController.destroyAndView}" value="#{bundle.ViewActividadDestroyLink}" ajax="false" icon="ui-icon-trash"/>
