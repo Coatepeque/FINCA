@@ -22,7 +22,7 @@
           <h:outputText value="#{bundle.ViewCostosLabel_cantidad}"/>
           <h:outputText value="#{costosController.selected.cantidad}" title="#{bundle.ViewCostosTitle_cantidad}"/>
           <h:outputText value="#{bundle.ViewCostosLabel_idCategoriaCostos}"/>
-          <h:outputText value="#{costosController.selected.idCategoriaCostos}" title="#{bundle.ViewCostosTitle_idCategoriaCostos}"/>
+          <h:outputText value="#{costosController.selected.idCategoriaCostos.descripcion}" title="#{bundle.ViewCostosTitle_idCategoriaCostos}"/>
         </h:panelGrid>
         <br />
         <h:commandLink action="#{costosController.destroyAndView}" value="#{bundle.ViewCostosDestroyLink}"/>
