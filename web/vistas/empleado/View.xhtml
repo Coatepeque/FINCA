@@ -44,9 +44,9 @@
           <h:outputText value="#{bundle.ViewEmpleadoLabel_banco}"/>
           <h:outputText value="#{empleadoController.selected.banco}" title="#{bundle.ViewEmpleadoTitle_banco}"/>
           <h:outputText value="#{bundle.ViewEmpleadoLabel_idFinca}"/>
-          <h:outputText value="#{empleadoController.selected.idFinca}" title="#{bundle.ViewEmpleadoTitle_idFinca}"/>
+          <h:outputText value="#{empleadoController.selected.idFinca.descripcion}" title="#{bundle.ViewEmpleadoTitle_idFinca}"/>
           <h:outputText value="#{bundle.ViewEmpleadoLabel_idTipoEmpleado}"/>
-          <h:outputText value="#{empleadoController.selected.idTipoEmpleado}" title="#{bundle.ViewEmpleadoTitle_idTipoEmpleado}"/>
+          <h:outputText value="#{empleadoController.selected.idTipoEmpleado.descripcion}" title="#{bundle.ViewEmpleadoTitle_idTipoEmpleado}"/>
         </h:panelGrid>
         <br />
         <h:commandLink action="#{empleadoController.destroyAndView}" value="#{bundle.ViewEmpleadoDestroyLink}"/>

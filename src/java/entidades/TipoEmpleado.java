@@ -118,7 +118,7 @@ public class TipoEmpleado implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.TipoEmpleado[ idTipoEmpleado=" + idTipoEmpleado + " ]";
+        return descripcion;
     }
     
 }

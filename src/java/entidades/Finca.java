@@ -105,7 +105,7 @@ public class Finca implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Finca[ idFinca=" + idFinca + " ]";
+        return descripcion;
     }
     
 }
