@@ -3,17 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
   <ui:composition template="/template.xhtml">
     <ui:define name="title">
       <h:outputText value="#{bundle.ViewPlanillaTitle}"></h:outputText>
     </ui:define>
     <ui:define name="body">
-      <h:panelGroup id="messagePanel" layout="block">
-        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-      </h:panelGroup>
-      <h:form>
+      <h:form id="centrar">
         <h:panelGrid columns="2">
           <h:outputText value="#{bundle.ViewPlanillaLabel_idPlanilla}"/>
           <h:outputText value="#{planillaController.selected.idPlanilla}" title="#{bundle.ViewPlanillaTitle_idPlanilla}"/>
@@ -31,18 +29,13 @@
           <h:outputText value="#{planillaController.selected.idEmpleado}" title="#{bundle.ViewPlanillaTitle_idEmpleado}"/>
         </h:panelGrid>
         <br />
-        <h:commandLink action="#{planillaController.destroyAndView}" value="#{bundle.ViewPlanillaDestroyLink}"/>
-        <br />
-        <br />
-        <h:link outcome="Edit" value="#{bundle.ViewPlanillaEditLink}"/>
-        <br />
-        <h:commandLink action="#{planillaController.prepareCreate}" value="#{bundle.ViewPlanillaCreateLink}" />
-        <br />
-        <h:commandLink action="#{planillaController.prepareList}" value="#{bundle.ViewPlanillaShowAllLink}"/>
-        <br />
-        <br />
-        <h:link outcome="/index" value="#{bundle.ViewPlanillaIndexLink}"/>
-
+        <p:menuButton value="Opciones"
+                <p:menuitem action="#{planillaController.destroyAndView}" value="#{bundle.ViewPlanillaDestroyLink}" icon="ui-icon-strash"/>
+                <p:menuitem outcome="Edit" value="#{bundle.ViewPlanillaEditLink}" icon="ui-icon-wrench"/>
+                <p:menuitem action="#{planillaController.prepareCreate}" value="#{bundle.ViewPlanillaCreateLink}" icon="ui-icon-newwin"/>
+                <p:menuitem action="#{planillaController.prepareList}" value="#{bundle.ViewPlanillaShowAllLink}" icon="ui-icon-clipboard"/>
+        </p:menuButton>
+        
       </h:form>
     </ui:define>
   </ui:composition>
