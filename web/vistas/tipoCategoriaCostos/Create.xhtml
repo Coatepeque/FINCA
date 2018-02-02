@@ -3,31 +3,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
   <ui:composition template="/template.xhtml">
     <ui:define name="title">
       <h:outputText value="#{bundle.CreateTipoCategoriaCostosTitle}"></h:outputText>
     </ui:define>
     <ui:define name="body">
-      <h:panelGroup id="messagePanel" layout="block">
-        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-      </h:panelGroup>
-      <h:form>
-        <h:panelGrid columns="2">
-          <h:outputLabel value="#{bundle.CreateTipoCategoriaCostosLabel_idTipoCategoriaCostos}" for="idTipoCategoriaCostos" />
-          <h:inputText id="idTipoCategoriaCostos" value="#{tipoCategoriaCostosController.selected.idTipoCategoriaCostos}" title="#{bundle.CreateTipoCategoriaCostosTitle_idTipoCategoriaCostos}" required="true" requiredMessage="#{bundle.CreateTipoCategoriaCostosRequiredMessage_idTipoCategoriaCostos}"/>
-          <h:outputLabel value="#{bundle.CreateTipoCategoriaCostosLabel_descripcion}" for="descripcion" />
-          <h:inputText id="descripcion" value="#{tipoCategoriaCostosController.selected.descripcion}" title="#{bundle.CreateTipoCategoriaCostosTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateTipoCategoriaCostosRequiredMessage_descripcion}"/>
-        </h:panelGrid>
+
+      <h:form id="centrar">
+        <p:panelGrid columns="2">
+          <p:outputLabel value="#{bundle.CreateTipoCategoriaCostosLabel_descripcion}" for="descripcion" />
+          <p:inputText id="descripcion" value="#{tipoCategoriaCostosController.selected.descripcion}" title="#{bundle.CreateTipoCategoriaCostosTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateTipoCategoriaCostosRequiredMessage_descripcion}"/>
+        </p:panelGrid>
         <br />
-        <h:commandLink action="#{tipoCategoriaCostosController.create}" value="#{bundle.CreateTipoCategoriaCostosSaveLink}" />
-        <br />
-        <br />
-        <h:commandLink action="#{tipoCategoriaCostosController.prepareList}" value="#{bundle.CreateTipoCategoriaCostosShowAllLink}" immediate="true"/>
-        <br />
-        <br />
-        <h:link outcome="/index" value="#{bundle.CreateTipoCategoriaCostosIndexLink}"/>
+        
+        <p:commandButton action="#{tipoCategoriaCostosController.create}" value="#{bundle.CreateTipoCategoriaCostosSaveLink}" ajax="false" icon="ui-icon-disk"/>
+        <p:commandButton action="#{tipoCategoriaCostosController.prepareList}" value="#{bundle.CreateTipoCategoriaCostosShowAllLink}" immediate="true" icon="ui-icon-clipboard"/>
+        <p:button outcome="/index" value="#{bundle.CreateTipoCategoriaCostosIndexLink}" icon="ui-icon-home"/>
       </h:form>
     </ui:define>
   </ui:composition>
