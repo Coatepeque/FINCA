@@ -47,7 +47,10 @@
         <h:outputText escape="false" value="#{bundle.ListEmpleadoEmpty}" rendered="#{empleadoController.items.rowCount == 0}"/>
         <h:panelGroup rendered="#{empleadoController.items.rowCount > 0}">
 
-          <p:dataTable id="tabla" value="#{empleadoController.items}" var="item" style="border:solid 1px" editable="true">
+          <p:dataTable id="tabla" value="#{empleadoController.items}" var="item" style="border:solid 1px" editable="true" rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
 
             <p:ajax event="rowEdit" listener="#{empleadoController.update}" update=":form:msgs" immediate="true"/>
 
@@ -57,43 +60,43 @@
               </f:facet>
               <h:outputText value="#{item.idEmpleado}"/>
             </p:column>
-            <p:column sortBy="#{item.nombres}" filterBy="#{item.nombres}">
+            <p:column sortBy="#{item.nombres}" filterBy="#{item.nombres}" filterStyle="width:80px">
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListEmpleadoTitle_nombres}"/>
               </f:facet>
               <h:outputText value="#{item.nombres}"/>
             </p:column>
-            <p:column sortBy="#{item.apellidos}" filterBy="#{item.apellidos}">
+            <p:column sortBy="#{item.apellidos}" filterBy="#{item.apellidos}" filterStyle="width:80px">
               <f:facet name="header">
                 <h:outputText value="Apellidos"/>
               </f:facet>
               <h:outputText value="#{item.apellidos}"/>
             </p:column>
-            <p:column>
+            <p:column sortBy="#{item.dpi}" filterBy="#{item.dpi}" filterStyle="width:80px">
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListEmpleadoTitle_dpi}"/>
               </f:facet>
               <h:outputText value="#{item.dpi}"/>
             </p:column>
-            <p:column>
+            <p:column sortBy="#{item.extendido}" filterBy="#{item.extendido}" filterStyle="width:80px">
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListEmpleadoTitle_extendido}"/>
               </f:facet>
               <h:outputText value="#{item.extendido}"/>
             </p:column>
-            <p:column>
+            <p:column sortBy="#{item.nit}" filterBy="#{item.nit}" filterStyle="width:80px">
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListEmpleadoTitle_nit}"/>
               </f:facet>
               <h:outputText value="#{item.nit}"/>
             </p:column>
-            <p:column>
+            <p:column sortBy="#{item.sexo}" filterBy="#{item.sexo}" filterStyle="width:80px">
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListEmpleadoTitle_sexo}"/>
               </f:facet>
               <h:outputText value="#{item.sexo}"/>
             </p:column>
-            <p:column>
+            <p:column >
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListEmpleadoTitle_fechaNacimiento}"/>
               </f:facet>
@@ -107,33 +110,33 @@
               </f:facet>
               <h:outputText value="#{item.foto}"/>
             </p:column>
-            <p:column>
-              <f:facet name="header">
+            <p:column >
+              <f:facet name="header" >
                 <h:outputText value="#{bundle.ListEmpleadoTitle_fechaIngreso}"/>
               </f:facet>
               <h:outputText value="#{item.fechaIngreso}">
                 <f:convertDateTime pattern="dd/MM/yyyy" />
               </h:outputText>
             </p:column>
-            <p:column>
+            <p:column sortBy="#{item.activo}" filterBy="#{item.activo}" filterStyle="width:80px">
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListEmpleadoTitle_activo}"/>
               </f:facet>
               <h:outputText value="#{item.activo}"/>
             </p:column>
-            <p:column>
+            <p:column sortBy="#{item.banco}" filterBy="#{item.banco}" filterStyle="width:80px">
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListEmpleadoTitle_banco}"/>
               </f:facet>
               <h:outputText value="#{item.banco}"/>
             </p:column>
-            <p:column>
+            <p:column sortBy="#{item.idFinca.descripcion}" filterBy="#{item.idFinca.descripcion}" filterStyle="width:80px">
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListEmpleadoTitle_idFinca}"/>
               </f:facet>
               <h:outputText value="#{item.idFinca.descripcion}"/>
             </p:column>
-            <p:column>
+            <p:column >
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListEmpleadoTitle_idTipoEmpleado}"/>
               </f:facet>
@@ -149,11 +152,6 @@
             </p:column>
           </p:dataTable>
         </h:panelGroup>
-        <br />
-        <h:commandLink action="#{empleadoController.prepareCreate}" value="#{bundle.ListEmpleadoCreateLink}"/>
-        <br />
-        <br />
-        <h:link outcome="/index" value="#{bundle.ListEmpleadoIndexLink}"/>
       </h:form>
     </ui:define>
   </ui:composition>
