@@ -12,7 +12,7 @@
     </ui:define>
     <ui:define name="body">
       <h:form id="form" styleClass="jsfcrud_list_form">
-        <p:growl id="msgs" showDetail="true"/>                
+        <p:growl id="growl" showDetail="true" sticky="true"/>                
 
         <p:toolbar>
           <p:toolbarGroup align="left">
@@ -48,7 +48,7 @@
                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
                        paginator="true" rows="10" style="margin-bottom:20px">
 
-            <p:ajax event="rowEdit" listener="#{actividadController.update}" update=":form:msgs" immediate="true"/>
+            
 
             <p:column style="width:32px">
               <f:facet name="header">
@@ -82,7 +82,7 @@
               <p:menuButton value="">
                 <p:menuitem action="#{actividadController.prepareView}" value="#{bundle.ListActividadViewLink}" icon="ui-icon-search" />
                 <p:menuitem action="#{actividadController.prepareEdit}" value="#{bundle.ListActividadEditLink}" icon="ui-icon-wrench" />
-                <p:menuitem action="#{actividadController.destroy}" value="#{bundle.ListActividadDestroyLink}" icon="ui-icon-strash"/>           
+                <p:menuitem action="#{actividadController.destroy}" value="#{bundle.ListActividadDestroyLink}" icon="ui-icon-trash" update=":form:growl" ajax="false"/>           
               </p:menuButton>
             </p:column>
 
