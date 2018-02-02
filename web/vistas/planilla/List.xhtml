@@ -13,7 +13,7 @@
     <ui:define name="body">
       <h:form id="form" styleClass="jsfcrud_list_form">
         
-                <p:toolbar>
+        <p:toolbar>
           <p:toolbarGroup align="left">
             <p:commandButton action="#{planillaController.prepareCreate}" value="#{bundle.ListPlanillaCreateLink}" icon="ui-icon-newwin"/>
             <p:button outcome="/index" value="#{bundle.ListActividadIndexLink}" icon="ui-icon-home"/>
@@ -46,7 +46,10 @@
         <h:outputText escape="false" value="#{bundle.ListPlanillaEmpty}" rendered="#{planillaController.items.rowCount == 0}"/>
         <h:panelGroup rendered="#{planillaController.items.rowCount > 0}">
 
-          <p:dataTable value="#{planillaController.items}" var="item" style="border:solid 1px" id="tabla">            
+          <p:dataTable value="#{planillaController.items}" var="item" style="border:solid 1px" id="tabla" rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15" >           
 
             <p:column style="width:32px">
               <f:facet name="header">
