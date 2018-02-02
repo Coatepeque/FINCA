@@ -4,14 +4,14 @@
     <Scope Scope="Project">
         <Node id="vistas/tipoCategoriaCostos/View.xhtml" x="900" y="300" zoom="true"/>
         <Node id="vistas/categoriaCostos/Edit.xhtml" x="150" y="1350" zoom="true"/>
-        <Node id="vistas/costos/Edit.xhtml" x="1150" y="450" zoom="true"/>
         <Node id="vistas/finca/Edit.xhtml" x="1900" y="300" zoom="true"/>
+        <Node id="vistas/costos/Edit.xhtml" x="1150" y="450" zoom="true"/>
         <Node id="vistas/reporteDiario/Create.xhtml" x="650" y="1050" zoom="true"/>
         <Node id="vistas/finca/View.xhtml" x="400" y="600" zoom="true"/>
         <Node id="vistas/centro/View.xhtml" x="1400" y="300" zoom="true"/>
         <Node id="vistas/tipoEmpleado/List.xhtml" x="400" y="1200" zoom="true"/>
-        <Node id="vistas/finca/List.xhtml" x="150" y="300" zoom="true"/>
         <Node id="vistas/subActividad/List.xhtml" x="650" y="150" zoom="true"/>
+        <Node id="vistas/finca/List.xhtml" x="150" y="300" zoom="true"/>
         <Node id="vistas/actividad/List.xhtml" x="150" y="150" zoom="true"/>
         <Node id="vistas/empleado/List.xhtml" x="400" y="150" zoom="true"/>
         <Node id="vistas/centro/List.xhtml" x="900" y="900" zoom="true"/>
@@ -19,22 +19,22 @@
         <Node id="vistas/categoriaCostos/List.xhtml" x="650" y="750" zoom="true"/>
         <Node id="vistas/actividad/View.xhtml" x="1650" y="150" zoom="true"/>
         <Node id="vistas/planilla/View.xhtml" x="150" y="750" zoom="true"/>
-        <Node id="vistas/empleado/View.xhtml" x="650" y="450" zoom="true"/>
         <Node id="vistas/categoriaCostos/Create.xhtml" x="1400" y="150" zoom="true"/>
-        <Node id="vistas/costos/View.xhtml" x="150" y="900" zoom="true"/>
+        <Node id="vistas/empleado/View.xhtml" x="650" y="450" zoom="true"/>
         <Node id="template.xhtml" x="650" y="600" zoom="true"/>
+        <Node id="vistas/costos/View.xhtml" x="150" y="900" zoom="true"/>
         <Node id="vistas/categoriaCostos/View.xhtml" x="900" y="450" zoom="true"/>
         <Node id="vistas/costos/List.xhtml" x="900" y="750" zoom="true"/>
-        <Node id="vistas/reporteDiario/Edit.xhtml" x="1400" y="600" zoom="true"/>
         <Node id="vistas/reporteDiario/View.xhtml" x="1150" y="150" zoom="true"/>
+        <Node id="vistas/reporteDiario/Edit.xhtml" x="1400" y="600" zoom="true"/>
         <Node id="vistas/costos/Create.xhtml" x="400" y="900" zoom="true"/>
         <Node id="vistas/planilla/Edit.xhtml" x="400" y="750" zoom="true"/>
         <Node id="vistas/subActividad/Create.xhtml" x="150" y="600" zoom="true"/>
         <Node id="index.xhtml" x="150" y="1050" zoom="true"/>
         <Node id="vistas/subActividad/Edit.xhtml" x="650" y="300" zoom="true"/>
         <Node id="vistas/actividad/Edit.xhtml" x="1400" y="450" zoom="true"/>
-        <Node id="vistas/reporteDiario/List.xhtml" x="150" y="450" zoom="true"/>
         <Node id="vistas/empleado/Edit.xhtml" x="1150" y="750" zoom="true"/>
+        <Node id="vistas/reporteDiario/List.xhtml" x="150" y="450" zoom="true"/>
         <Node id="vistas/finca/Create.xhtml" x="2150" y="150" zoom="true"/>
         <Node id="vistas/tipoCategoriaCostos/Create.xhtml" x="400" y="450" zoom="true"/>
         <Node id="vistas/planilla/Create.xhtml" x="400" y="1050" zoom="true"/>
@@ -43,11 +43,11 @@
         <Node id="vistas/tipoEmpleado/View.xhtml" x="900" y="150" zoom="true"/>
         <Node id="vistas/empleado/Create.xhtml" x="900" y="600" zoom="true"/>
         <Node id="vistas/subActividad/View.xhtml" x="1900" y="150" zoom="true"/>
-        <Node id="vistas/tipoEmpleado/Create.xhtml" x="1150" y="600" zoom="true"/>
         <Node id="vistas/actividad/Create.xhtml" x="2400" y="150" zoom="true"/>
+        <Node id="vistas/tipoEmpleado/Create.xhtml" x="1150" y="600" zoom="true"/>
         <Node id="vistas/centro/Edit.xhtml" x="650" y="900" zoom="true"/>
-        <Node id="vistas/tipoCategoriaCostos/Edit.xhtml" x="400" y="300" zoom="true"/>
         <Node id="vistas/tipoCategoriaCostos/List.xhtml" x="1150" y="300" zoom="true"/>
+        <Node id="vistas/tipoCategoriaCostos/Edit.xhtml" x="400" y="300" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>

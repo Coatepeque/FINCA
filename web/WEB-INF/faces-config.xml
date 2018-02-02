@@ -10,8 +10,8 @@
         </resource-bundle>
         
     <locale-config>
-        <default-locale>fr</default-locale>
-        <supported-locale>fr</supported-locale>
+        <default-locale>es</default-locale>
+        <supported-locale>es</supported-locale>
     </locale-config>
 
     </application>
