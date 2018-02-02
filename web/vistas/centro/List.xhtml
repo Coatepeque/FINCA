@@ -66,10 +66,7 @@
               </f:facet>
               <h:outputText value="#{item.descripcion}"/>
             </p:column>
-            <p:column style="width: 32px">
-              <f:facet name="header">
-                <h:outputText value="&nbsp;"/>
-              </f:facet>
+                <p:column style="width:32px" exportable="false" toggleable="false">
                 <p:menuButton> 
                     <p:menuitem action="#{centroController.prepareView}" value="#{bundle.ListCentroViewLink}" icon="ui-icon-search"/>
                     <p:menuitem action="#{centroController.prepareEdit}" value="#{bundle.ListCentroEditLink}" icon="ui-icon-wrench"/>

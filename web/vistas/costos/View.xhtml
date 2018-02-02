@@ -13,6 +13,7 @@
     <ui:define name="body">
       
       <h:form id="centrar">
+          <p:growl id="growl" showDetail="true" sticky="true"/>
         <h:panelGrid columns="2">
           <h:outputText value="#{bundle.ViewCostosLabel_idCostos}"/>
           <h:outputText value="#{costosController.selected.idCostos}" title="#{bundle.ViewCostosTitle_idCostos}"/>
@@ -25,10 +26,10 @@
         </h:panelGrid>
         <br />
         <p:menuButton value="Opciones"> 
-            <p:menuitem action="#{costosController.destroyAndView}" value="#{bundle.ViewCostosDestroyLink}" icon="iu-icon-strash"/>
-            <p:menuitem outcome="Edit" value="#{bundle.ViewCostosEditLink}" icon="iu-icon-wrench"/>
-            <p:menuitem action="#{costosController.prepareCreate}" value="#{bundle.ViewCostosCreateLink}" icon="iu-icon-newwin" />
-            <p:menuitem action="#{costosController.prepareList}" value="#{bundle.ViewCostosShowAllLink}" icon="iu-icon-clipboard"/>
+            <p:menuitem action="#{costosController.destroyAndView}" value="#{bundle.ViewCostosDestroyLink}" icon="ui-icon-trash" update=":centrar:growl"/>
+            <p:menuitem outcome="Edit" value="#{bundle.ViewCostosEditLink}" icon="ui-icon-wrench"/>
+            <p:menuitem action="#{costosController.prepareCreate}" value="#{bundle.ViewCostosCreateLink}" icon="ui-icon-newwin" />
+            <p:menuitem action="#{costosController.prepareList}" value="#{bundle.ViewCostosShowAllLink}" icon="ui-icon-clipboard"/>
         </p:menuButton>
 
       </h:form>

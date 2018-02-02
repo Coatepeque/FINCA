@@ -12,7 +12,7 @@
     </ui:define>
     <ui:define name="body">
       <h:form id="form" styleClass="jsfcrud_list_form">
-          <p:growl id="msgs" showDetail="true"/>
+          <p:growl id="growl" showDetail="true" sticky="true"/>
           
           <p:toolbar>
           <p:toolbarGroup align="left">
@@ -35,7 +35,7 @@
               <p:dataExporter type="pdf" target="tabla" fileName="cars"/>
             </h:commandLink>
             <p:separator />
-            <p:commandButton id="toggler" type="button" value="Columns" style="float:right" icon="ui-icon-calculator" />
+            <p:commandButton id="toggler" type="button" value="Columnas" style="float:right" icon="ui-icon-calculator" />
             <p:columnToggler datasource="tabla" trigger="toggler" />
           </p:toolbarGroup>
         </p:toolbar>
@@ -47,7 +47,7 @@
         <h:outputText escape="false" value="#{bundle.ListCostosEmpty}" rendered="#{costosController.items.rowCount == 0}"/>
         <h:panelGroup rendered="#{costosController.items.rowCount > 0}">
             <p:dataTable id="tabla" value="#{costosController.items}" var="item" style="border: solid 1px" editable="true">
-                <p:ajax event="rowEdit" listener="#{costosController.update}" update=":form:msgs" immediate="true"/>
+                
                 
                 <p:column style="width: 32px">
               <f:facet name="header">
@@ -73,14 +73,11 @@
               </f:facet>
               <h:outputText value="#{item.idCategoriaCostos.descripcion}"/>
             </p:column>
-                <p:column style=" width: 32px">
-              <f:facet name="header">
-                <h:outputText value="&nbsp;"/>
-              </f:facet>
+                <p:column style="width:32px" exportable="false" toggleable="false">
                     <p:menuButton>
                         <p:menuitem action="#{costosController.prepareView}" value="#{bundle.ListCostosViewLink}" icon="ui-icon-search"/>
                         <p:menuitem action="#{costosController.prepareEdit}" value="#{bundle.ListCostosEditLink}" icon="ui-icon-wrench"/>
-                        <p:menuitem action="#{costosController.destroy}" value="#{bundle.ListCostosDestroyLink}" icon="ui-icon-strash"/>
+                        <p:menuitem action="#{costosController.destroy}" value="#{bundle.ListCostosDestroyLink}" icon="ui-icon-trash" update=":form:growl" ajax="false"/>
                     </p:menuButton>
             </p:column>
           </p:dataTable>
