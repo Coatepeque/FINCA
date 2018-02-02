@@ -11,29 +11,59 @@
       <h:outputText value="#{bundle.ListEmpleadoTitle}"></h:outputText>
     </ui:define>
     <ui:define name="body">
-      <h:form styleClass="jsfcrud_list_form">
+      <h:form id="form" styleClass="jsfcrud_list_form">
+        <p:growl id="msgs" showDetail="true"/>                
+
+        <p:toolbar>
+          <p:toolbarGroup align="left">
+            <p:commandButton action="#{empleadoController.prepareCreate}" value="#{bundle.ListActividadCreateLink}" icon="ui-icon-newwin"/>
+            <p:button outcome="/index" value="#{bundle.ListActividadIndexLink}" icon="ui-icon-home"/>
+            <p:separator />
+            <p:commandButton value="Imprimir" type="button" icon="ui-icon-print"> 
+              <p:printer target="tabla"  />
+            </p:commandButton>
+          </p:toolbarGroup>
+
+
+          <p:toolbarGroup align="right">
+            <h:commandLink>
+              <p:graphicImage url="/multimedia/imagenes/excel2.png" width="24"/>
+              <p:dataExporter type="xlsx" target="tabla" fileName="cars" pageOnly="true" />
+            </h:commandLink>
+            <p:separator />
+            <h:commandLink>
+              <p:graphicImage url="/multimedia/imagenes/pdf.svg" width="24"/>
+              <p:dataExporter type="pdf" target="tabla" fileName="cars"/>
+            </h:commandLink>
+            <p:separator />
+            <p:commandButton id="toggler" type="button" value="Columns" style="float:right" icon="ui-icon-calculator" />
+            <p:columnToggler datasource="tabla" trigger="toggler" />
+          </p:toolbarGroup>
+        </p:toolbar>
+
         <h:panelGroup id="messagePanel" layout="block">
           <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
         </h:panelGroup>
         <h:outputText escape="false" value="#{bundle.ListEmpleadoEmpty}" rendered="#{empleadoController.items.rowCount == 0}"/>
         <h:panelGroup rendered="#{empleadoController.items.rowCount > 0}">
-          <h:outputText value="#{empleadoController.pagination.pageFirstItem + 1}..#{empleadoController.pagination.pageLastItem + 1}/#{empleadoController.pagination.itemsCount}"/>&nbsp;
-          <h:commandLink action="#{empleadoController.previous}" value="#{bundle.Previous} #{empleadoController.pagination.pageSize}" rendered="#{empleadoController.pagination.hasPreviousPage}"/>&nbsp;
-          <h:commandLink action="#{empleadoController.next}" value="#{bundle.Next} #{empleadoController.pagination.pageSize}" rendered="#{empleadoController.pagination.hasNextPage}"/>&nbsp;
-          <p:dataTable value="#{empleadoController.items}" var="item" style="border:solid 1px">
-            <p:column>
+
+          <p:dataTable id="tabla" value="#{empleadoController.items}" var="item" style="border:solid 1px" editable="true">
+
+            <p:ajax event="rowEdit" listener="#{empleadoController.update}" update=":form:msgs" immediate="true"/>
+
+            <p:column style="width:32px">
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListEmpleadoTitle_idEmpleado}"/>
               </f:facet>
               <h:outputText value="#{item.idEmpleado}"/>
             </p:column>
-            <p:column>
+            <p:column sortBy="#{item.nombres}" filterBy="#{item.nombres}">
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListEmpleadoTitle_nombres}"/>
               </f:facet>
               <h:outputText value="#{item.nombres}"/>
             </p:column>
-            <p:column>
+            <p:column sortBy="#{item.apellidos}" filterBy="#{item.apellidos}">
               <f:facet name="header">
                 <h:outputText value="Apellidos"/>
               </f:facet>
@@ -68,7 +98,7 @@
                 <h:outputText value="#{bundle.ListEmpleadoTitle_fechaNacimiento}"/>
               </f:facet>
               <h:outputText value="#{item.fechaNacimiento}">
-                <f:convertDateTime pattern="MM/dd/yyyy" />
+                <f:convertDateTime pattern="dd/MM/yyyy" />
               </h:outputText>
             </p:column>
             <p:column>
@@ -82,7 +112,7 @@
                 <h:outputText value="#{bundle.ListEmpleadoTitle_fechaIngreso}"/>
               </f:facet>
               <h:outputText value="#{item.fechaIngreso}">
-                <f:convertDateTime pattern="MM/dd/yyyy" />
+                <f:convertDateTime pattern="dd/MM/yyyy" />
               </h:outputText>
             </p:column>
             <p:column>
@@ -109,15 +139,13 @@
               </f:facet>
               <h:outputText value="#{item.idTipoEmpleado.descripcion}"/>
             </p:column>
-            <p:column>
-              <f:facet name="header">
-                <h:outputText value="&nbsp;"/>
-              </f:facet>
-              <h:commandLink action="#{empleadoController.prepareView}" value="#{bundle.ListEmpleadoViewLink}"/>
-              <h:outputText value=" "/>
-              <h:commandLink action="#{empleadoController.prepareEdit}" value="#{bundle.ListEmpleadoEditLink}"/>
-              <h:outputText value=" "/>
-              <h:commandLink action="#{empleadoController.destroy}" value="#{bundle.ListEmpleadoDestroyLink}"/>
+
+            <p:column style="width:32px" exportable="false" toggleable="false">
+              <p:menuButton value="">
+                <p:menuitem action="#{empleadoController.prepareView}" value="#{bundle.ListActividadViewLink}" icon="ui-icon-search" update=":form:msgs" />
+                <p:menuitem action="#{empleadoController.prepareEdit}" value="#{bundle.ListActividadEditLink}" icon="ui-icon-wrench" />
+                <p:menuitem action="#{empleadoController.destroy}" value="#{bundle.ListActividadDestroyLink}" icon="ui-icon-strash"/>           
+              </p:menuButton>
             </p:column>
           </p:dataTable>
         </h:panelGroup>

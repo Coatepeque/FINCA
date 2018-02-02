@@ -12,7 +12,7 @@
     </ui:define>
     <ui:define name="body">
       <h:form id="centrar">
-
+        
         <p:panelGrid columns="2" style="content:center">          
           <p:outputLabel value="#{bundle.EditActividadLabel_codigo}" for="codigo" />
           <p:inputText id="codigo" value="#{actividadController.selected.codigo}" title="#{bundle.EditActividadTitle_codigo}" required="true" requiredMessage="#{bundle.EditActividadRequiredMessage_codigo}"/>
@@ -27,7 +27,7 @@
         <p:menuButton value="Opciones">
           <p:menuitem action="#{actividadController.update}" value="#{bundle.EditActividadSaveLink}" ajax="false" icon="ui-icon-disk"/>
           <p:menuitem outcome="View" value="#{bundle.EditActividadViewLink}" icon="ui-icon-search" />
-          <p:menuitem action="#{actividadController.prepareList}" value="#{bundle.EditActividadShowAllLink}" immediate="true" icon="ui-icon-clipboard"/> 
+          <p:menuitem action="#{actividadController.prepareList}" value="#{bundle.ViewActividadShowAllLink}" icon="ui-icon-clipboard" immediate="true"/> 
           <p:menuitem outcome="/index" value="#{bundle.EditActividadIndexLink}" icon="ui-icon-home"/>
         </p:menuButton>
 

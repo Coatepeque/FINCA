@@ -11,7 +11,8 @@
       <h:outputText value="#{bundle.ViewActividadTitle}"></h:outputText>
     </ui:define>
     <ui:define name="body">
-      <h:form id='centrar'>      
+      <h:form id='centrar'> 
+               <p:growl id="msgs" showDetail="true"/>
         <p:panelGrid columns="2">          
           <h:outputText value="#{bundle.ViewActividadLabel_codigo}"/>
           <h:outputText value="#{actividadController.selected.codigo}" title="#{bundle.ViewActividadTitle_codigo}"/>
@@ -22,10 +23,10 @@
         </p:panelGrid>
         <br/>
             <p:menuButton value="Opciones">
-                <p:menuitem action="#{actividadController.destroyAndView}" value="#{bundle.ViewActividadDestroyLink}" ajax="false" icon="ui-icon-trash"/>
+                <p:menuitem action="#{actividadController.destroyAndView}" value="#{bundle.ViewActividadDestroyLink}" icon="ui-icon-trash"/>
                 <p:menuitem outcome="Edit" value="#{bundle.ViewActividadEditLink}" icon="ui-icon-wrench"/>
-                <p:menuitem action="#{actividadController.prepareCreate}" value="#{bundle.ViewActividadCreateLink}" icon="ui-icon-newwin"/>     
-                <p:menuitem action="#{actividadController.prepareList}" value="#{bundle.ViewActividadShowAllLink}" icon="ui-icon-clipboard"/>
+                <p:menuitem action="#{actividadController.prepareCreate}" value="#{bundle.ViewActividadCreateLink}" icon="ui-icon-newwin"/>    
+                <p:menuitem action="#{actividadController.prepareList}" value="#{bundle.ViewActividadShowAllLink}" icon="ui-icon-clipboard" ajax="false"/>
             </p:menuButton>
 
       </h:form>

@@ -48,16 +48,16 @@
                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
                        paginator="true" rows="10" style="margin-bottom:20px">
 
-            <p:ajax event="rowEdit" listener="#{actividadController.update}" update=":form:msgs" />
+            <p:ajax event="rowEdit" listener="#{actividadController.update}" update=":form:msgs" immediate="true"/>
 
-            <p:column>
+            <p:column style="width:32px">
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListActividadTitle_idActividad}"/>
               </f:facet>
               <h:outputText value="#{item.idActividad}"/>
             </p:column>
 
-            <p:column>
+            <p:column sortBy="#{item.codigo}" filterBy="#{item.codigo}">
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListActividadTitle_codigo}"/>
               </f:facet>
@@ -71,7 +71,7 @@
               </p:cellEditor>
             </p:column>
 
-            <p:column>
+            <p:column sortBy="#{item.descripcion}" filterBy="#{item.descripcion}">
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListActividadTitle_descripcion}"/>
               </f:facet>
@@ -85,7 +85,7 @@
               </p:cellEditor>
             </p:column>
 
-            <p:column>
+            <p:column sortBy="#{item.idCentro.codigo}" filterBy="#{item.idCentro.codigo}">
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListActividadTitle_idCentro}"/>
               </f:facet>
@@ -94,28 +94,20 @@
                   <h:outputText value="#{item.idCentro.codigo}" />
                 </f:facet>
                 <f:facet name="input">
-                  <p:selectOneMenu id="idCentro" value="#{item.idCentro.codigo}" required="true">
+                  <p:selectOneMenu value="#{item.idCentro}">
                     <f:selectItems value="#{centroController.itemsAvailableSelectOne}"/>
                   </p:selectOneMenu>
                 </f:facet>
               </p:cellEditor>
             </p:column>
 
- 
-
-            <p:column exportable="false">
-              <f:facet name="header">
-                <h:outputText value="&nbsp;"/>
-              </f:facet>
-              <p:menuButton value="Opciones">
-                <p:menuitem action="#{actividadController.prepareView}" value="#{bundle.ListActividadViewLink}" icon="ui-icon-search" />
-                <p:menuitem action="#{actividadController.prepareEdit}" value="#{bundle.ListActividadEditLink}" icon="ui-icon-wrench" />
-                <p:menuitem action="#{actividadController.destroy}" value="#{bundle.ListActividadDestroyLink}" icon="ui-icon-strash" ajax="false"/>           
-              </p:menuButton>
-            </p:column>
-
-            <p:column style="width:32px">
+            <p:column style="width:32px" exportable="false" toggleable="false">
               <p:rowEditor />
+              <p:menuButton value="">
+                <p:menuitem action="#{actividadController.prepareView}" value="#{bundle.ListActividadViewLink}" icon="ui-icon-search" update=":form:msgs" />
+                <p:menuitem action="#{actividadController.prepareEdit}" value="#{bundle.ListActividadEditLink}" icon="ui-icon-wrench" />
+                <p:menuitem action="#{actividadController.destroy}" value="#{bundle.ListActividadDestroyLink}" icon="ui-icon-strash"/>           
+              </p:menuButton>
             </p:column>
 
           </p:dataTable>        
