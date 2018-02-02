@@ -3,37 +3,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
   <ui:composition template="/template.xhtml">
     <ui:define name="title">
       <h:outputText value="#{bundle.CreateSubActividadTitle}"></h:outputText>
     </ui:define>
     <ui:define name="body">
-      <h:panelGroup id="messagePanel" layout="block">
-        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-      </h:panelGroup>
-      <h:form>
-        <h:panelGrid columns="2">
-          <h:outputLabel value="#{bundle.CreateSubActividadLabel_idSubActividad}" for="idSubActividad" />
-          <h:inputText id="idSubActividad" value="#{subActividadController.selected.idSubActividad}" title="#{bundle.CreateSubActividadTitle_idSubActividad}" required="true" requiredMessage="#{bundle.CreateSubActividadRequiredMessage_idSubActividad}"/>
-          <h:outputLabel value="#{bundle.CreateSubActividadLabel_codigo}" for="codigo" />
-          <h:inputText id="codigo" value="#{subActividadController.selected.codigo}" title="#{bundle.CreateSubActividadTitle_codigo}" required="true" requiredMessage="#{bundle.CreateSubActividadRequiredMessage_codigo}"/>
-          <h:outputLabel value="#{bundle.CreateSubActividadLabel_descripcion}" for="descripcion" />
-          <h:inputText id="descripcion" value="#{subActividadController.selected.descripcion}" title="#{bundle.CreateSubActividadTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateSubActividadRequiredMessage_descripcion}"/>
-          <h:outputLabel value="#{bundle.CreateSubActividadLabel_idActividad}" for="idActividad" />
-          <h:selectOneMenu id="idActividad" value="#{subActividadController.selected.idActividad}" title="#{bundle.CreateSubActividadTitle_idActividad}" required="true" requiredMessage="#{bundle.CreateSubActividadRequiredMessage_idActividad}">
+      
+      <h:form id="centrar">
+        <p:panelGrid columns="2">
+          <p:outputLabel value="#{bundle.CreateSubActividadLabel_codigo}" for="codigo" />
+          <p:inputText id="codigo" value="#{subActividadController.selected.codigo}" title="#{bundle.CreateSubActividadTitle_codigo}" required="true" requiredMessage="#{bundle.CreateSubActividadRequiredMessage_codigo}"/>
+          <p:outputLabel value="#{bundle.CreateSubActividadLabel_descripcion}" for="descripcion" />
+          <p:inputText id="descripcion" value="#{subActividadController.selected.descripcion}" title="#{bundle.CreateSubActividadTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateSubActividadRequiredMessage_descripcion}"/>
+          <p:outputLabel value="#{bundle.CreateSubActividadLabel_idActividad}" for="idActividad" />
+          <p:selectOneMenu id="idActividad" value="#{subActividadController.selected.idActividad}" title="#{bundle.CreateSubActividadTitle_idActividad}" required="true" requiredMessage="#{bundle.CreateSubActividadRequiredMessage_idActividad}">
             <f:selectItems value="#{actividadController.itemsAvailableSelectOne}"/>
-          </h:selectOneMenu>
-        </h:panelGrid>
+          </p:selectOneMenu>
+        </p:panelGrid>
         <br />
-        <h:commandLink action="#{subActividadController.create}" value="#{bundle.CreateSubActividadSaveLink}" />
-        <br />
-        <br />
-        <h:commandLink action="#{subActividadController.prepareList}" value="#{bundle.CreateSubActividadShowAllLink}" immediate="true"/>
-        <br />
-        <br />
-        <h:link outcome="/index" value="#{bundle.CreateSubActividadIndexLink}"/>
+        <p:commandButton action="#{subActividadController.create}" value="#{bundle.CreateSubActividadSaveLink}" ajax="false" icon="ui-icon-disk"/>
+        <p:commandButton action="#{subActividadController.prepareList}" value="#{bundle.CreateSubActividadShowAllLink}" immediate="true" icon="ui-icon-clipboard"/>
+        <p:button outcome="/index" value="#{bundle.CreateSubActividadIndexLink}" icon="ui-icon-home"/>
       </h:form>
     </ui:define>
   </ui:composition>

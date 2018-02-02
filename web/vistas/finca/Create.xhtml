@@ -18,9 +18,9 @@
           <p:inputText id="descripcion" value="#{fincaController.selected.descripcion}" title="#{bundle.CreateFincaTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateFincaRequiredMessage_descripcion}"/>
         </p:panelGrid>
         <br />
-        <p:commandButton action="#{fincaController.create}" value="#{bundle.CreateFincaSaveLink}" ajax="false" />
-        <p:commandButton action="#{fincaController.prepareList}" value="#{bundle.CreateFincaShowAllLink}" immediate="true"/>
-        <p:button outcome="/index" value="#{bundle.CreateFincaIndexLink}"/>
+        <p:commandButton action="#{fincaController.create}" value="#{bundle.CreateFincaSaveLink}" ajax="false" icon="ui-icon-disk" />
+        <p:commandButton action="#{fincaController.prepareList}" value="#{bundle.CreateFincaShowAllLink}" immediate="true" icon="ui-icon-clipboard"/>
+        <p:button outcome="/index" value="#{bundle.CreateFincaIndexLink}" icon="ui-icon-home"/>
       </h:form>
     </ui:define>
   </ui:composition>

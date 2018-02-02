@@ -21,9 +21,9 @@
         </p:panelGrid>
           
         <p:menuButton value="Opciones">
-        <p:menuitem action="#{fincaController.update}" value="#{bundle.EditFincaSaveLink}"/>
-        <p:menuitem outcome="View" value="#{bundle.EditFincaViewLink}"/>
-        <p:menuitem action="#{fincaController.prepareList}" value="#{bundle.EditFincaShowAllLink}" immediate="true"/>
+        <p:menuitem action="#{fincaController.update}" value="#{bundle.EditFincaSaveLink}" ajax="false" icon="ui-icon-disk"/>
+        <p:menuitem outcome="View" value="#{bundle.EditFincaViewLink}" icon="ui-icon-search"/>
+        <p:menuitem action="#{fincaController.prepareList}" value="#{bundle.EditFincaShowAllLink}" immediate="true" icon="ui-icon-clipboard"/>
          </p:menuButton>
       </h:form>
     </ui:define>
