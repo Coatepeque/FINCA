@@ -12,7 +12,7 @@
     </ui:define>
     <ui:define name="body">
       <h:form id="form" styleClass="jsfcrud_list_form">
-        <p:growl id="msgs" showDetail="true"/>                
+        <p:growl id="growl" showDetail="true" sticky="true" />              
 
         <p:toolbar>
           <p:toolbarGroup align="left">
@@ -36,7 +36,7 @@
               <p:dataExporter type="pdf" target="tabla" fileName="cars"/>
             </h:commandLink>
             <p:separator />
-            <p:commandButton id="toggler" type="button" value="Columns" style="float:right" icon="ui-icon-calculator" />
+            <p:commandButton id="toggler" type="button" value="Columnas" style="float:right" icon="ui-icon-calculator" />
             <p:columnToggler datasource="tabla" trigger="toggler" />
           </p:toolbarGroup>
         </p:toolbar>
@@ -48,9 +48,7 @@
                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
                        paginator="true" rows="10" style="margin-bottom:20px">
 
-            <p:ajax event="rowEdit" listener="#{categoriaCostosController.update}" update=":form:msgs" immediate="true"/>
-
-            <p:column style="width:32px">
+              <p:column style="width:32px">
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListCategoriaCostosTitle_idCategoriaCostos}"/>
               </f:facet>
@@ -76,7 +74,7 @@
               <p:menuButton value="">
                 <p:menuitem action="#{categoriaCostosController.prepareView}" value="#{bundle.ListActividadViewLink}" icon="ui-icon-search"/>
                 <p:menuitem action="#{categoriaCostosController.prepareEdit}" value="#{bundle.ListActividadEditLink}" icon="ui-icon-wrench" />
-                <p:menuitem action="#{categoriaCostosController.destroy}" value="#{bundle.ListActividadDestroyLink}" icon="ui-icon-strash"/>           
+                <p:menuitem action="#{categoriaCostosController.destroy}" value="#{bundle.ListActividadDestroyLink}" icon="ui-icon-trash" update=":form:growl" ajax="false"/>           
               </p:menuButton>
             </p:column>
             

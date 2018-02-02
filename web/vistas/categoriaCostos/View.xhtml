@@ -12,6 +12,7 @@
     </ui:define>
     <ui:define name="body">
       <h:form id='centrar'>
+          <p:growl id="growl" showDetail="true" sticky="true" />
         <p:panelGrid columns="2">
           <h:outputText value="#{bundle.ViewCategoriaCostosLabel_idCategoriaCostos}"/>
           <h:outputText value="#{categoriaCostosController.selected.idCategoriaCostos}" title="#{bundle.ViewCategoriaCostosTitle_idCategoriaCostos}"/>
@@ -22,10 +23,10 @@
         </p:panelGrid>
         <br />
         <p:menuButton value="Opciones">
-        <p:menuitem action="#{categoriaCostosController.destroyAndView}" value="#{bundle.ViewCategoriaCostosDestroyLink}" ajax="false" icon="ui-icon-strash"/>
+        <p:menuitem action="#{categoriaCostosController.destroyAndView}" value="#{bundle.ViewCategoriaCostosDestroyLink}" icon="ui-icon-trash" update=":centrar:growl"/>
         <p:menuitem outcome="Edit" value="#{bundle.ViewCategoriaCostosEditLink}" icon="ui-icon-wrench"/>
         <p:menuitem action="#{categoriaCostosController.prepareCreate}" value="#{bundle.ViewCategoriaCostosCreateLink}" icon="ui-icon-newwin" />
-        <p:menuitem action="#{categoriaCostosController.prepareList}" value="#{bundle.ViewCategoriaCostosShowAllLink}" icon="ui-icon-cipboard"/>
+        <p:menuitem action="#{categoriaCostosController.prepareList}" value="#{bundle.ViewCategoriaCostosShowAllLink}" icon="ui-icon-clipboard"/>
         </p:menuButton>
         
       </h:form>
