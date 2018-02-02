@@ -11,27 +11,44 @@
       <h:outputText value="#{bundle.ListPlanillaTitle}"></h:outputText>
     </ui:define>
     <ui:define name="body">
-      <h:form styleClass="jsfcrud_list_form">
+      <h:form id="form" styleClass="jsfcrud_list_form">
+        
+                <p:toolbar>
+          <p:toolbarGroup align="left">
+            <p:commandButton action="#{planillaController.prepareCreate}" value="#{bundle.ListPlanillaCreateLink}" icon="ui-icon-newwin"/>
+            <p:button outcome="/index" value="#{bundle.ListActividadIndexLink}" icon="ui-icon-home"/>
+            <p:separator />
+            <p:commandButton value="Imprimir" type="button" icon="ui-icon-print"> 
+              <p:printer target="tabla"  />
+            </p:commandButton>
+          </p:toolbarGroup>
+
+
+          <p:toolbarGroup align="right">
+            <h:commandLink>
+              <p:graphicImage url="/multimedia/imagenes/excel2.png" width="24"/>
+              <p:dataExporter type="xlsx" target="tabla" fileName="cars" pageOnly="true" />
+            </h:commandLink>
+            <p:separator />
+            <h:commandLink>
+              <p:graphicImage url="/multimedia/imagenes/pdf.svg" width="24"/>
+              <p:dataExporter type="pdf" target="tabla" fileName="cars"/>
+            </h:commandLink>
+            <p:separator />
+            <p:commandButton id="toggler" type="button" value="Columns" style="float:right" icon="ui-icon-calculator" />
+            <p:columnToggler datasource="tabla" trigger="toggler" />
+          </p:toolbarGroup>
+        </p:toolbar>
+        
         <h:panelGroup id="messagePanel" layout="block">
           <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
         </h:panelGroup>
         <h:outputText escape="false" value="#{bundle.ListPlanillaEmpty}" rendered="#{planillaController.items.rowCount == 0}"/>
         <h:panelGroup rendered="#{planillaController.items.rowCount > 0}">
-          <h:outputText value="#{planillaController.pagination.pageFirstItem + 1}..#{planillaController.pagination.pageLastItem + 1}/#{planillaController.pagination.itemsCount}"/>&nbsp;
-          <h:commandLink action="#{planillaController.previous}" value="#{bundle.Previous} #{planillaController.pagination.pageSize}" rendered="#{planillaController.pagination.hasPreviousPage}"/>&nbsp;
-          <h:commandLink action="#{planillaController.next}" value="#{bundle.Next} #{planillaController.pagination.pageSize}" rendered="#{planillaController.pagination.hasNextPage}"/>&nbsp;
-          <p:dataTable value="#{planillaController.items}" var="item" style="border:solid 1px" widgetVar="tabla" id="planilla"
-                       emptyMessage="No cars found with given criteria" filteredValue="#{planillaController.selected}">
-            <f:facet name="header">
-              <p:outputPanel>
-                <h:outputText value="Search all fields:" />
-                <p:inputText id="globalFilter" onkeyup="PF('tabla').filter()" style="width:150px" placeholder="Enter keyword"/>
-              </p:outputPanel>
-              
-              <p:commandButton id="toggler" type="button" value="Quitar Columnas" icon="ui-icon-calculator" />
-              <p:columnToggler datasource="planilla" trigger="toggler" />
-            </f:facet> 
-            <p:column >
+
+          <p:dataTable value="#{planillaController.items}" var="item" style="border:solid 1px" id="tabla">            
+
+            <p:column style="width:32px">
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListPlanillaTitle_idPlanilla}"/>
               </f:facet>
@@ -61,7 +78,7 @@
               </f:facet>
               <h:outputText value="#{item.bonificación}"/>
             </p:column>
-            <p:column>
+            <p:column filterBy="#{item.salarioLiquido}" sortBy="#{item.salarioLiquido}">
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListPlanillaTitle_salarioLiquido}"/>
               </f:facet>
@@ -73,26 +90,17 @@
               </f:facet>
               <h:outputText value="#{item.idEmpleado.nombres}"/>
             </p:column>
-            <p:column>
-              <f:facet name="header">
-                <h:outputText value="&nbsp;"/>
-              </f:facet>
-              <h:commandLink action="#{planillaController.prepareView}" value="#{bundle.ListPlanillaViewLink}"/>
-              <h:outputText value=" "/>
-              <h:commandLink action="#{planillaController.prepareEdit}" value="#{bundle.ListPlanillaEditLink}"/>
-              <h:outputText value=" "/>
-              <h:commandLink action="#{planillaController.destroy}" value="#{bundle.ListPlanillaDestroyLink}"/>
+
+            <p:column style="width:32px" exportable="false" toggleable="false">
+              <p:menuButton value="">
+                <p:menuitem action="#{planillaController.prepareView}" value="#{bundle.ListPlanillaViewLink}" icon="ui-icon-search" />
+                <p:menuitem action="#{planillaController.prepareEdit}" value="#{bundle.ListPlanillaEditLink}" icon="ui-icon-wrench" />
+                <p:menuitem action="#{planillaController.destroy}" value="#{bundle.ListPlanillaDestroyLink}" icon="ui-icon-strash"/>           
+              </p:menuButton>
             </p:column>
+            
           </p:dataTable>
         </h:panelGroup>
-            <p:commandButton value="Ver empleados" icon="ui-icon-extlink" actionListener="#{empleadoController.items}">
-        <p:ajax event="dialogReturn" listener="#{empleadoController.items}"  />
-    </p:commandButton>
-        <br />
-        <h:commandLink action="#{planillaController.prepareCreate}" value="#{bundle.ListPlanillaCreateLink}"/>
-        <br />
-        <br />
-        <h:link outcome="/index" value="#{bundle.ListPlanillaIndexLink}"/>
       </h:form>
     </ui:define>
   </ui:composition>

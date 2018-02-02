@@ -29,7 +29,7 @@
           <h:outputText value="#{planillaController.selected.idEmpleado}" title="#{bundle.ViewPlanillaTitle_idEmpleado}"/>
         </h:panelGrid>
         <br />
-        <p:menuButton value="Opciones"
+        <p:menuButton value="Opciones">
                 <p:menuitem action="#{planillaController.destroyAndView}" value="#{bundle.ViewPlanillaDestroyLink}" icon="ui-icon-strash"/>
                 <p:menuitem outcome="Edit" value="#{bundle.ViewPlanillaEditLink}" icon="ui-icon-wrench"/>
                 <p:menuitem action="#{planillaController.prepareCreate}" value="#{bundle.ViewPlanillaCreateLink}" icon="ui-icon-newwin"/>
