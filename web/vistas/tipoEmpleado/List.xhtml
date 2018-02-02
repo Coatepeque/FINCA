@@ -11,60 +11,84 @@
       <h:outputText value="#{bundle.ListTipoEmpleadoTitle}"></h:outputText>
     </ui:define>
     <ui:define name="body">
-      <h:form styleClass="jsfcrud_list_form">
+      <h:form id="form" styleClass="jsfcrud_list_form">
+      
+          <p:toolbar>
+          <p:toolbarGroup align="left">
+            <p:commandButton action="#{tipoEmpleadoController.prepareCreate}" value="#{bundle.ListPlanillaCreateLink}" icon="ui-icon-newwin"/>
+            <p:button outcome="/index" value="#{bundle.ListActividadIndexLink}" icon="ui-icon-home"/>
+            <p:separator />
+            <p:commandButton value="Imprimir" type="button" icon="ui-icon-print"> 
+              <p:printer target="tabla"  />
+            </p:commandButton>
+          </p:toolbarGroup>
+              
+              <p:toolbarGroup align="right">
+            <h:commandLink>
+              <p:graphicImage url="/multimedia/imagenes/excel2.png" width="24"/>
+              <p:dataExporter type="xlsx" target="tabla" fileName="cars" pageOnly="true" />
+            </h:commandLink>
+            <p:separator />
+            <h:commandLink>
+              <p:graphicImage url="/multimedia/imagenes/pdf.svg" width="24"/>
+              <p:dataExporter type="pdf" target="tabla" fileName="cars"/>
+            </h:commandLink>
+            <p:separator />
+            <p:commandButton id="toggler" type="button" value="Columns" style="float:right" icon="ui-icon-calculator" />
+            <p:columnToggler datasource="tabla" trigger="toggler" />
+          </p:toolbarGroup>
+        </p:toolbar>
+          
+          
         <h:panelGroup id="messagePanel" layout="block">
           <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
         </h:panelGroup>
-        <h:outputText escape="false" value="#{bundle.ListTipoEmpleadoEmpty}" rendered="#{tipoEmpleadoController.items.rowCount == 0}"/>
+           
+        <h:outputText escape="false" value="#{bundle.ListtipoEmpleadoEmpty}" rendered="#{tipoEmpleadoController.items.rowCount == 0}"/>
         <h:panelGroup rendered="#{tipoEmpleadoController.items.rowCount > 0}">
-          <h:outputText value="#{tipoEmpleadoController.pagination.pageFirstItem + 1}..#{tipoEmpleadoController.pagination.pageLastItem + 1}/#{tipoEmpleadoController.pagination.itemsCount}"/>&nbsp;
-          <h:commandLink action="#{tipoEmpleadoController.previous}" value="#{bundle.Previous} #{tipoEmpleadoController.pagination.pageSize}" rendered="#{tipoEmpleadoController.pagination.hasPreviousPage}"/>&nbsp;
-          <h:commandLink action="#{tipoEmpleadoController.next}" value="#{bundle.Next} #{tipoEmpleadoController.pagination.pageSize}" rendered="#{tipoEmpleadoController.pagination.hasNextPage}"/>&nbsp;
-          <p:dataTable value="#{tipoEmpleadoController.items}" var="item" style="border:solid 1px"  widgetVar="item"
-                       emptyMessage="No se encontraron registros" 
-                       >
-            <f:facet name="header">
-            <p:outputPanel>
-                <h:outputText value="Search all fields:" />
-                <p:inputText id="globalFilter" onkeyup="PF('item').filter()" style="width:150px" placeholder="Enter keyword"/>
-            </p:outputPanel>
-            </f:facet>
-            <p:column>
+            
+
+          <p:dataTable id="tabla" value="#{tipoEmpleadoController.items}" var="item"  style="border:solid 1px" rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15" >
+            
+               <p:column style="width:32px">
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListTipoEmpleadoTitle_idTipoEmpleado}"/>
               </f:facet>
               <h:outputText value="#{item.idTipoEmpleado}"/>
             </p:column>
-            <p:column>
+              
+            
+              
+              <p:column filterBy="#{item.codigo}" sortBy="#{item.codigo}">
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListTipoEmpleadoTitle_codigo}"/>
               </f:facet>
               <h:outputText value="#{item.codigo}"/>
             </p:column>
-            <p:column>
+              
+                <p:column filterBy="#{item.descripcion}" sortBy="#{item.descripcion}">
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListTipoEmpleadoTitle_descripcion}"/>
               </f:facet>
               <h:outputText value="#{item.descripcion}"/>
             </p:column>
-            <p:column>
-              <f:facet name="header">
-                <h:outputText value="&nbsp;"/>
-              </f:facet>
-              <h:commandLink action="#{tipoEmpleadoController.prepareView}" value="#{bundle.ListTipoEmpleadoViewLink}"/>
-              <h:outputText value=" "/>
-              <h:commandLink action="#{tipoEmpleadoController.prepareEdit}" value="#{bundle.ListTipoEmpleadoEditLink}"/>
-              <h:outputText value=" "/>
-              <h:commandLink action="#{tipoEmpleadoController.destroy}" value="#{bundle.ListTipoEmpleadoDestroyLink}"/>
-            </p:column>
+              
+              <p:column style="width:32px" exportable="false" toggleable="false">
+              <p:menuButton value="">
+              <p:menuitem action="#{tipoEmpleadoController.prepareView}" value="#{bundle.ListTipoEmpleadoViewLink}" icon="ui-icon-search" />
+              <p:menuitem action="#{tipoEmpleadoController.prepareEdit}" value="#{bundle.ListTipoEmpleadoEditLink}" icon="ui-icon-wrench"/>
+              <p:menuitem action="#{tipoEmpleadoController.destroy}" value="#{bundle.ListTipoEmpleadoDestroyLink}" icon="ui-icon-strash"/>
+              </p:menuButton>
+              </p:column>
+            
           </p:dataTable>
-        </h:panelGroup>
+            
+            </h:panelGroup>      
         <br />
-        <h:commandLink action="#{tipoEmpleadoController.prepareCreate}" value="#{bundle.ListTipoEmpleadoCreateLink}"/>
-        <br />
-        <br />
-        <h:link outcome="/index" value="#{bundle.ListTipoEmpleadoIndexLink}"/>
-      </h:form>
+        </h:form>
     </ui:define>
   </ui:composition>
 
