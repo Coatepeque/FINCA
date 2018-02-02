@@ -140,7 +140,7 @@ public class CentroJpaController implements Serializable {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
-                illegalOrphanMessages.add("This Centro (" + centro + ") cannot be destroyed since the Actividad " + actividadListOrphanCheckActividad + " in its actividadList field has a non-nullable idCentro field.");
+                illegalOrphanMessages.add("Este campo no puede ser eliminado, porque hay actividades registradas.");
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);

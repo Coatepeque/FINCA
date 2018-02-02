@@ -164,7 +164,7 @@ public class ActividadJpaController implements Serializable {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
-                illegalOrphanMessages.add("This Actividad (" + actividad + ") cannot be destroyed since the SubActividad " + subActividadListOrphanCheckSubActividad + " in its subActividadList field has a non-nullable idActividad field.");
+                illegalOrphanMessages.add("Este campo no puede ser eliminado, porque hay actividades registradas.");
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);

@@ -140,7 +140,7 @@ public class TipoEmpleadoJpaController implements Serializable {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
-                illegalOrphanMessages.add("This TipoEmpleado (" + tipoEmpleado + ") cannot be destroyed since the Empleado " + empleadoListOrphanCheckEmpleado + " in its empleadoList field has a non-nullable idTipoEmpleado field.");
+                illegalOrphanMessages.add("Este campo no puede ser eliminado, porque hay empleados registrados a este campo.");
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);

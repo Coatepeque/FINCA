@@ -235,14 +235,14 @@ public class EmpleadoJpaController implements Serializable {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
-                illegalOrphanMessages.add("This Empleado (" + empleado + ") cannot be destroyed since the ReporteDiario " + reporteDiarioListOrphanCheckReporteDiario + " in its reporteDiarioList field has a non-nullable idEmpleado field.");
+                illegalOrphanMessages.add("El empleado no puede ser eliminado, porque esta registrado en los reportes.");
             }
             List<Planilla> planillaListOrphanCheck = empleado.getPlanillaList();
             for (Planilla planillaListOrphanCheckPlanilla : planillaListOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
-                illegalOrphanMessages.add("This Empleado (" + empleado + ") cannot be destroyed since the Planilla " + planillaListOrphanCheckPlanilla + " in its planillaList field has a non-nullable idEmpleado field.");
+                illegalOrphanMessages.add("El empleado no puede ser eliminado, porque esta registrado en planilla.");
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);

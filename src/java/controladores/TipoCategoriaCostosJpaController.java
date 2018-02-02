@@ -140,7 +140,7 @@ public class TipoCategoriaCostosJpaController implements Serializable {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
-                illegalOrphanMessages.add("This TipoCategoriaCostos (" + tipoCategoriaCostos + ") cannot be destroyed since the CategoriaCostos " + categoriaCostosListOrphanCheckCategoriaCostos + " in its categoriaCostosList field has a non-nullable idTipoCategoriaCostos field.");
+                illegalOrphanMessages.add("Este campo no puede ser eliminado, porque hay categorias que lo utilizan.");
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);

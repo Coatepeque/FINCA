@@ -164,7 +164,7 @@ public class SubActividadJpaController implements Serializable {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
-                illegalOrphanMessages.add("This SubActividad (" + subActividad + ") cannot be destroyed since the ReporteDiario " + reporteDiarioListOrphanCheckReporteDiario + " in its reporteDiarioList field has a non-nullable idSubActividad field.");
+                illegalOrphanMessages.add("Este campo no puede ser eliminado, porque esta registrado en reportes.");
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);

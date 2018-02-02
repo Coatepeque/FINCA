@@ -164,7 +164,7 @@ public class CostosJpaController implements Serializable {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
-                illegalOrphanMessages.add("This Costos (" + costos + ") cannot be destroyed since the ReporteDiario " + reporteDiarioListOrphanCheckReporteDiario + " in its reporteDiarioList field has a non-nullable idCostos field.");
+                illegalOrphanMessages.add("Este campo no puede ser eliminado porque esta registrado en los reportes.");
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
