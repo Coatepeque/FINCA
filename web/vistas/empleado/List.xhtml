@@ -12,7 +12,7 @@
     </ui:define>
     <ui:define name="body">
       <h:form id="form" styleClass="jsfcrud_list_form">
-        <p:growl id="msgs" showDetail="true"/>                
+        <p:growl id="growl" showDetail="true" sticky="true"/>              
 
         <p:toolbar>
           <p:toolbarGroup align="left">
@@ -52,8 +52,7 @@
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          rowsPerPageTemplate="5,10,15">
 
-            <p:ajax event="rowEdit" listener="#{empleadoController.update}" update=":form:msgs" immediate="true"/>
-
+           
             <p:column style="width:32px">
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListEmpleadoTitle_idEmpleado}"/>
@@ -145,9 +144,9 @@
 
             <p:column style="width:32px" exportable="false" toggleable="false">
               <p:menuButton value="">
-                <p:menuitem action="#{empleadoController.prepareView}" value="#{bundle.ListActividadViewLink}" icon="ui-icon-search" update=":form:msgs" />
+                <p:menuitem action="#{empleadoController.prepareView}" value="#{bundle.ListActividadViewLink}" icon="ui-icon-search" />
                 <p:menuitem action="#{empleadoController.prepareEdit}" value="#{bundle.ListActividadEditLink}" icon="ui-icon-wrench" />
-                <p:menuitem action="#{empleadoController.destroy}" value="#{bundle.ListActividadDestroyLink}" icon="ui-icon-strash"/>           
+                <p:menuitem action="#{empleadoController.destroy}" value="#{bundle.ListActividadDestroyLink}" icon="ui-icon-strash" update=":form:growl"/>           
               </p:menuButton>
             </p:column>
           </p:dataTable>

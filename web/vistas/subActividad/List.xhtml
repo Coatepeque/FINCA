@@ -12,7 +12,7 @@
     </ui:define>
     <ui:define name="body">
       <h:form id="form" styleClass="jsfcrud_list_form">
-
+          <p:growl id="growl" showDetail="true" sticky="true" />
         <p:toolbar>
           <p:toolbarGroup align="left">
             <p:commandButton action="#{subActividadController.prepareCreate}"  value="#{bundle.ListPlanillaCreateLink}" icon="ui-icon-newwin"/>
@@ -35,7 +35,7 @@
               <p:dataExporter type="pdf" target="tabla" fileName="cars"/>
             </h:commandLink>
             <p:separator />
-            <p:commandButton id="toggler" type="button" value="Columns" style="float:right" icon="ui-icon-calculator" />
+            <p:commandButton id="toggler" type="button" value="Columnas" style="float:right" icon="ui-icon-calculator" />
             <p:columnToggler datasource="tabla" trigger="toggler" />
           </p:toolbarGroup>
         </p:toolbar>
@@ -79,7 +79,7 @@
               <p:menuButton value="">
                 <p:menuitem action="#{subActividadController.prepareView}" value="#{bundle.ListSubActividadViewLink}" icon="ui-icon-search" />
                 <p:menuitem action="#{subActividadController.prepareEdit}" value="#{bundle.ListSubActividadEditLink}" icon="ui-icon-wrench" />
-                <p:menuitem action="#{subActividadController.destroy}" value="#{bundle.ListSubActividadDestroyLink}" icon="ui-icon-strash"/>           
+                <p:menuitem action="#{subActividadController.destroy}" value="#{bundle.ListSubActividadDestroyLink}" icon="ui-icon-trash" update=":form:growl" ajax="false"/>           
               </p:menuButton>
             </p:column>            
           </p:dataTable>

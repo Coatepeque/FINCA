@@ -12,6 +12,7 @@
     </ui:define>
     <ui:define name="body">
       <h:form id="form" styleClass="jsfcrud_list_form">
+          <p:growl id="growl" showDetail="true" sticky="true" />
         
         
         <p:toolbar>
@@ -36,7 +37,7 @@
               <p:dataExporter type="pdf" target="tabla" fileName="cars"/>
             </h:commandLink>
             <p:separator />
-            <p:commandButton id="toggler" type="button" value="Columns" style="float:right" icon="ui-icon-calculator" />
+            <p:commandButton id="toggler" type="button" value="Columnas" style="float:right" icon="ui-icon-calculator" />
             <p:columnToggler datasource="tabla" trigger="toggler" />
           </p:toolbarGroup>
         </p:toolbar>
@@ -68,7 +69,7 @@
               <p:menuButton value="">
                 <p:menuitem action="#{tipoCategoriaCostosController.prepareView}" value="#{bundle.ListTipoCategoriaCostosViewLink}" icon="ui-icon-search" />
                 <p:menuitem action="#{tipoCategoriaCostosController.prepareEdit}" value="#{bundle.ListTipoCategoriaCostosEditLink}" icon="ui-icon-wrench" />
-                <p:menuitem action="#{tipoCategoriaCostosController.destroy}" value="#{bundle.ListTipoCategoriaCostosDestroyLink}" icon="ui-icon-strash"/>           
+                <p:menuitem action="#{tipoCategoriaCostosController.destroy}" value="#{bundle.ListTipoCategoriaCostosDestroyLink}" icon="ui-icon-trash" update=":form:growl" ajax="false"/>           
               </p:menuButton>
             </p:column>            
           </p:dataTable>

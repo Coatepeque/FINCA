@@ -13,6 +13,7 @@
     <ui:define name="body">
      
       <h:form id="centrar">
+          <p:growl id="growl" showDetail="true" sticky="true" />
         <p:panelGrid columns="2">
           <h:outputText value="#{bundle.ViewSubActividadLabel_idSubActividad}"/>
           <h:outputText value="#{subActividadController.selected.idSubActividad}" title="#{bundle.ViewSubActividadTitle_idSubActividad}"/>
@@ -25,7 +26,7 @@
         </p:panelGrid>
         <br />
         <p:menuButton value="Opciones"> 
-        <p:menuitem action="#{subActividadController.destroyAndView}" value="#{bundle.ViewSubActividadDestroyLink}" icon="iu-icon-strash"/>
+        <p:menuitem action="#{subActividadController.destroyAndView}" value="#{bundle.ViewSubActividadDestroyLink}" icon="ui-icon-trash" update=":centrar:growl"/>
         <p:menuitem outcome="Edit" value="#{bundle.ViewSubActividadEditLink}" icon="iu-icon-wrench"/>
         <p:menuitem action="#{subActividadController.prepareCreate}" value="#{bundle.ViewSubActividadCreateLink}" icon="iu-icon-newwin"/>
         <p:menuitem action="#{subActividadController.prepareList}" value="#{bundle.ViewSubActividadShowAllLink}" icon="iu-icon-clipboard"/>

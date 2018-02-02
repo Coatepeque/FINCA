@@ -12,6 +12,7 @@
     </ui:define>
     <ui:define name="body">
       <h:form id="centrar">
+          <p:growl id="growl" showDetail="true" sticky="true" />
         <h:panelGrid columns="2">
           <h:outputText value="#{bundle.ViewReporteDiarioLabel_idReporteDiario}"/>
           <h:outputText value="#{reporteDiarioController.selected.idReporteDiario}" title="#{bundle.ViewReporteDiarioTitle_idReporteDiario}"/>
@@ -38,7 +39,7 @@
         </h:panelGrid>
         <br />
         <p:menuButton value="Opciones">
-            <p:menuitem action="#{reporteDiarioController.destroyAndView}" value="#{bundle.ViewReporteDiarioDestroyLink}" icon="ui-icon-strash"/>
+            <p:menuitem action="#{reporteDiarioController.destroyAndView}" value="#{bundle.ViewReporteDiarioDestroyLink}" icon="ui-icon-trash" update=":centrar:growl"/>
             <p:menuitem outcome="Edit" value="#{bundle.ViewReporteDiarioEditLink}" icon="ui-icon-wrench"/>
             <p:menuitem action="#{reporteDiarioController.prepareCreate}" value="#{bundle.ViewReporteDiarioCreateLink}" icon="ui-icon-newwin"/>
             <p:menuitem action="#{reporteDiarioController.prepareList}" value="#{bundle.ViewReporteDiarioShowAllLink}" icon="ui-icon-clipboard"/>

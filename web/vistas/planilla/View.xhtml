@@ -12,6 +12,7 @@
     </ui:define>
     <ui:define name="body">
       <h:form id="centrar">
+          <p:growl id="growl" showDetail="true" sticky="true" />
         <h:panelGrid columns="2">
           <h:outputText value="#{bundle.ViewPlanillaLabel_idPlanilla}"/>
           <h:outputText value="#{planillaController.selected.idPlanilla}" title="#{bundle.ViewPlanillaTitle_idPlanilla}"/>
@@ -30,7 +31,7 @@
         </h:panelGrid>
         <br />
         <p:menuButton value="Opciones">
-                <p:menuitem action="#{planillaController.destroyAndView}" value="#{bundle.ViewPlanillaDestroyLink}" icon="ui-icon-strash"/>
+                <p:menuitem action="#{planillaController.destroyAndView}" value="#{bundle.ViewPlanillaDestroyLink}" icon="ui-icon-trash" update=":centrar:growl"/>
                 <p:menuitem outcome="Edit" value="#{bundle.ViewPlanillaEditLink}" icon="ui-icon-wrench"/>
                 <p:menuitem action="#{planillaController.prepareCreate}" value="#{bundle.ViewPlanillaCreateLink}" icon="ui-icon-newwin"/>
                 <p:menuitem action="#{planillaController.prepareList}" value="#{bundle.ViewPlanillaShowAllLink}" icon="ui-icon-clipboard"/>
