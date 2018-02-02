@@ -13,6 +13,7 @@
     <ui:define name="body">
       
       <h:form id="centrar">
+          <p:growl id="growl" showDetail="true" sticky="true" />
         <p:panelGrid columns="2">
           <h:outputText value="#{bundle.ViewCentroLabel_idCentro}"/>
           <h:outputText value="#{centroController.selected.idCentro}" title="#{bundle.ViewCentroTitle_idCentro}"/>
@@ -23,7 +24,7 @@
         </p:panelGrid>
         <br />
         <p:menuButton value="Opciones">
-            <p:menuitem action="#{centroController.destroyAndView}" value="#{bundle.ViewCentroDestroyLink}" icon="ui-icon-strash"/>
+            <p:menuitem action="#{centroController.destroyAndView}" value="#{bundle.ViewCentroDestroyLink}" icon="ui-icon-trash" update=":centrar:growl"/>
             <p:menuitem outcome="Edit" value="#{bundle.ViewCentroEditLink}" icon="ui-icon-wrench"/>
             <p:menuitem action="#{centroController.prepareCreate}" value="#{bundle.ViewCentroCreateLink}" icon="ui-icon-newwin" />
             <p:menuitem action="#{centroController.prepareList}" value="#{bundle.ViewCentroShowAllLink}" icon="ui-icon-clipboard"/>

@@ -12,7 +12,7 @@
     </ui:define>
     <ui:define name="body">
       <h:form id="form" styleClass="jsfcrud_list_form">
-          <p:growl id="msgs" showDetail="true"/>
+          <p:growl id="growl" showDetail="true" sticky="true" />   
           
           <p:toolbar>
           <p:toolbarGroup align="left">
@@ -35,7 +35,7 @@
               <p:dataExporter type="pdf" target="tabla" fileName="cars"/>
             </h:commandLink>
             <p:separator />
-            <p:commandButton id="toggler" type="button" value="Columns" style="float:right" icon="ui-icon-calculator" />
+            <p:commandButton id="toggler" type="button" value="Columnas" style="float:right" icon="ui-icon-calculator" />
             <p:columnToggler datasource="tabla" trigger="toggler" />
           </p:toolbarGroup>
         </p:toolbar>
@@ -47,8 +47,7 @@
         <h:panelGroup rendered="#{centroController.items.rowCount > 0}">
             
             <p:dataTable id="tabla" value="#{centroController.items}" var="item" style="border: solid 1px" editable="true"> 
-                <p:ajax event="rowEdit" listener="#{centroController.update}" update=":form:msgs" immediate="true"/>
-                
+                                
                 <p:column style="width: 32px">
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListCentroTitle_idCentro}"/>
@@ -74,7 +73,7 @@
                 <p:menuButton> 
                     <p:menuitem action="#{centroController.prepareView}" value="#{bundle.ListCentroViewLink}" icon="ui-icon-search"/>
                     <p:menuitem action="#{centroController.prepareEdit}" value="#{bundle.ListCentroEditLink}" icon="ui-icon-wrench"/>
-                    <p:menuitem action="#{centroController.destroy}" value="#{bundle.ListCentroDestroyLink}" icon="ui-icon-strash"/>
+                    <p:menuitem action="#{centroController.destroy}" value="#{bundle.ListCentroDestroyLink}" icon="ui-icon-trash" update=":form:growl" ajax="false"/>
                 </p:menuButton>
             </p:column>
           </p:dataTable>
