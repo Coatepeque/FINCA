@@ -16,7 +16,7 @@
 
         <p:toolbar>
           <p:toolbarGroup align="left">
-            <p:commandButton action="#{actividadController.prepareCreate}" value="#{bundle.ListActividadCreateLink}" icon="ui-icon-newwin"/>
+            <p:commandButton action="#{categoriaCostosController.prepareCreate}" value="#{bundle.ListActividadCreateLink}" icon="ui-icon-newwin"/>
             <p:button outcome="/index" value="#{bundle.ListActividadIndexLink}" icon="ui-icon-home"/>
             <p:separator />
             <p:commandButton value="Imprimir" type="button" icon="ui-icon-print"> 
@@ -50,47 +50,31 @@
 
             <p:ajax event="rowEdit" listener="#{categoriaCostosController.update}" update=":form:msgs" immediate="true"/>
 
-            <p:column>
+            <p:column style="width:32px">
               <f:facet name="header">
                 <h:outputText value="#{bundle.ListCategoriaCostosTitle_idCategoriaCostos}"/>
               </f:facet>
               <h:outputText value="#{item.idCategoriaCostos}"/>
             </p:column>
-
-            <p:column sortBy="#{item.descripcion}" filterBy="#{item.descripcion}">
+            
+            <p:column filterBy="#{item.descripcion}" sortBy="#{item.descripcion}">
               <f:facet name="header">
-                <h:outputText value="#{bundle.ListActividadTitle_codigo}"/>
+                <h:outputText value="#{bundle.ListCategoriaCostosTitle_descripcion}"/>
               </f:facet>
-              <p:cellEditor>
-                <f:facet name="output">
-                  <h:outputText value="#{item.descripcion}" />
-                </f:facet>
-                <f:facet name="input">
-                  <p:inputText value="#{item.descripcion}" style="width:100%"/>
-                </f:facet>
-              </p:cellEditor>
+              <h:outputText value="#{item.descripcion}"/>
             </p:column>
-
-            <p:column sortBy="#{item.idTipoCategoriaCostos.descripcion}" filterBy="#{item.idTipoCategoriaCostos.descripcion}">
+            
+            <p:column filterBy="#{item.idTipoCategoriaCostos.descripcion}" sortBy="#{item.idTipoCategoriaCostos.descripcion}">
               <f:facet name="header">
-                <h:outputText value="#{bundle.ListActividadTitle_codigo}"/>
+                <h:outputText value="#{bundle.ListCategoriaCostosTitle_idTipoCategoriaCostos}"/>
               </f:facet>
-              <p:cellEditor>
-                <f:facet name="output">
-                  <h:outputText value="#{item.idTipoCategoriaCostos.descripcion}" />
-                </f:facet>
-                <f:facet name="input">
-                  <p:selectOneMenu value="#{item.idTipoCategoriaCostos}">
-                    <f:selectItems value="#{tipoCategoriaCostosController.itemsAvailableSelectOne}"/>
-                  </p:selectOneMenu>
-                </f:facet>
-              </p:cellEditor>
-            </p:column>
+              <h:outputText value="#{item.idTipoCategoriaCostos.descripcion}"/>
+            </p:column> 
+
 
             <p:column style="width:32px" exportable="false" toggleable="false">
-              <p:rowEditor />
               <p:menuButton value="">
-                <p:menuitem action="#{categoriaCostosController.prepareView}" value="#{bundle.ListActividadViewLink}" icon="ui-icon-search" update=":form:msgs" />
+                <p:menuitem action="#{categoriaCostosController.prepareView}" value="#{bundle.ListActividadViewLink}" icon="ui-icon-search"/>
                 <p:menuitem action="#{categoriaCostosController.prepareEdit}" value="#{bundle.ListActividadEditLink}" icon="ui-icon-wrench" />
                 <p:menuitem action="#{categoriaCostosController.destroy}" value="#{bundle.ListActividadDestroyLink}" icon="ui-icon-strash"/>           
               </p:menuButton>
