@@ -13,6 +13,7 @@
     <ui:define name="body">
       
       <h:form id="centrar">
+        <p:growl id="growl" showDetail="true" sticky="true" />
         <p:panelGrid columns="2">
           <h:outputText value="#{bundle.ViewFincaLabel_idFinca}"/>
           <h:outputText value="#{fincaController.selected.idFinca}" title="#{bundle.ViewFincaTitle_idFinca}"/>
@@ -21,7 +22,7 @@
         </p:panelGrid>
         <br />
         <p:menuButton value="Opciones"> 
-        <p:menuitem action="#{fincaController.destroyAndView}" value="#{bundle.ViewFincaDestroyLink}" icon="iu-icon-strash"/>
+        <p:menuitem action="#{fincaController.destroyAndView}" value="#{bundle.ViewFincaDestroyLink}" icon="iu-icon-strash" update=":centrar:growl"/>
         <p:menuitem outcome="Edit" value="#{bundle.ViewFincaEditLink}" icon="iu-icon-wrench"/>
         <p:menuitem action="#{fincaController.prepareCreate}" value="#{bundle.ViewFincaCreateLink}" icon="iu-icon-newwin"/>
         <p:menuitem action="#{fincaController.prepareList}" value="#{bundle.ViewFincaShowAllLink}" icon="iu-icon-clipboard"/>

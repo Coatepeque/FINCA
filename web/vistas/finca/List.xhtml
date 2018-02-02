@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ES" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -12,7 +12,7 @@
     </ui:define>
     <ui:define name="body">
       <h:form id="form" styleClass="jsfcrud_list_form">
-
+        <p:growl id="growl" showDetail="true" sticky="true" />
         <p:toolbar>
           <p:toolbarGroup align="left">
             <p:commandButton action="#{fincaController.prepareCreate}" value="#{bundle.ListPlanillaCreateLink}" icon="ui-icon-newwin"/>
@@ -40,9 +40,6 @@
           </p:toolbarGroup>
         </p:toolbar>
 
-        <h:panelGroup id="messagePanel" layout="block">
-          <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-        </h:panelGroup>
         <h:outputText escape="false" value="#{bundle.ListFincaEmpty}" rendered="#{fincaController.items.rowCount == 0}"/>
         <h:panelGroup rendered="#{fincaController.items.rowCount > 0}">
 
@@ -69,7 +66,7 @@
               <p:menuButton value="">
                 <p:menuitem action="#{fincaController.prepareView}" value="#{bundle.ListFincaViewLink}" icon="ui-icon-search" />
                 <p:menuitem action="#{fincaController.prepareEdit}" value="#{bundle.ListFincaEditLink}" icon="ui-icon-wrench" />
-                <p:menuitem action="#{fincaController.destroy}" value="#{bundle.ListFincaDestroyLink}" icon="ui-icon-strash"/>           
+                <p:menuitem action="#{fincaController.destroy}" value="#{bundle.ListFincaDestroyLink}" icon="ui-icon-strash" update=":form:growl" ajax="false"/>           
               </p:menuButton>
             </p:column>
             
